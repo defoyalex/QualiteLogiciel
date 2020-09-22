@@ -33,7 +33,7 @@ public class Main {
 	public static void calculateMetriques(Classe[] listeClasses){
 		
 		for(Classe classe : listeClasses){
-			
+			classe.calculateMetriques();
 			
 		}
 		
