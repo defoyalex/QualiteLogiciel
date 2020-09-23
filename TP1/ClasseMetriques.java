@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class ClasseMetriques{
+public class ClasseMetriques extends Metriques{
 	private MethodeMetriques[] methodesMetriques;
 	private double wmc;
 	
