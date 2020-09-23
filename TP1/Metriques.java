@@ -9,8 +9,6 @@ public abstract class Metriques{
 	private int cloc;
 	private int dc;
 	private double bc;
-		
-
 
 	public boolean isComment(String ligne){
 		Pattern singleLine = Pattern.compile("//");

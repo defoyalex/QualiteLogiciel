@@ -5,12 +5,9 @@ import java.util.regex.Pattern;
 
 
 public class MethodeMetriques extends Metriques{
-
 	private String methodName;
 	private double cc;
-		
-		
-		
+
 	public MethodeMetriques(String methodInString){
 		
 		//TODO
