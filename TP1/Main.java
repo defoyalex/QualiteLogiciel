@@ -10,7 +10,7 @@ public class Main {
 	d'un répertoire */
 	public static File[] getListJavaFiles(String directory){
 		File files = new File(directory);
-		if(!files.isDirectory())
+		if(!files.isDirectory())  //si c'est un dossier et non un fichier
 			return null;
 		FileFilter filter = new FileFilter(){
 
