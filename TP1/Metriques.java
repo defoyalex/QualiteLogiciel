@@ -15,7 +15,7 @@ public abstract class Metriques{
 	public boolean isComment(String ligne){
 		Pattern singleLine = Pattern.compile("//");
 		Pattern multipleLine = Pattern.compile("/*");
-		Pattern javadoc = Pattern.compile("/**");
+		Pattern javadoc = Pattern.compile("/u002A/u002A");
 		
 		//if pattern match do.....
 		

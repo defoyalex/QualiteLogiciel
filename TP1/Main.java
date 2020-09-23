@@ -12,8 +12,7 @@ public class Main {
 		File files = new File(directory);
 		if(!files.isDirectory())  //si c'est un dossier et non un fichier
 			return null;
-		FileFilter filter = new FileFilter(){
-
+		FileFilter filter = new FileFilter(){ //sert à ne conserver que les fichiers java
 			public boolean accept(File files){
 				return files.getName().endsWith("java");
 			}
@@ -21,7 +20,6 @@ public class Main {
 
 		File[]listFiles = files.listFiles(filter);
 		return listFiles;
-	
 	}
 	
 	// Lis une liste de fichiers 0
