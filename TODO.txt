@@ -1,0 +1,1 @@
+Lecture du fichier dans Main: concaténer toutes les lignes pour former une longue string qui va etre notre class/méthode.
