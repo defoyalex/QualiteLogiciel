@@ -20,6 +20,20 @@
     <property name="last.edited.regexp" value="Sample Text" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="QualiteLogiciel" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -30,5 +44,50 @@
       <updated>1600886184441</updated>
     </task>
     <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="2005" height="217" key="GridCell.Tab.0.bottom" timestamp="1601043805652">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="217" key="GridCell.Tab.0.bottom/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601043805652" />
+    <state width="2005" height="217" key="GridCell.Tab.0.center" timestamp="1601043805652">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="217" key="GridCell.Tab.0.center/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601043805652" />
+    <state width="2005" height="217" key="GridCell.Tab.0.left" timestamp="1601043805652">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="217" key="GridCell.Tab.0.left/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601043805652" />
+    <state width="2005" height="217" key="GridCell.Tab.0.right" timestamp="1601043805652">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="217" key="GridCell.Tab.0.right/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601043805652" />
+    <state width="2005" height="217" key="GridCell.Tab.1.bottom" timestamp="1601043805806">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="217" key="GridCell.Tab.1.bottom/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601043805806" />
+    <state width="2005" height="217" key="GridCell.Tab.1.center" timestamp="1601043805806">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="217" key="GridCell.Tab.1.center/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601043805806" />
+    <state width="2005" height="217" key="GridCell.Tab.1.left" timestamp="1601043805806">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="217" key="GridCell.Tab.1.left/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601043805806" />
+    <state width="2005" height="217" key="GridCell.Tab.1.right" timestamp="1601043805806">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="217" key="GridCell.Tab.1.right/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601043805806" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/TP1/Main.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

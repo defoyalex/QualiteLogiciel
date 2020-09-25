@@ -35,6 +35,7 @@ public class Main {
 					String line = reader.nextLine();
 					if(isClass(line)){
 						//TODO si la ligne est le début d'une classe
+                        System.out.println(""+line);
 					}
 				}
 				reader.close();
@@ -62,7 +63,7 @@ public class Main {
 	public static void main (String[] args) {
 		String folder = "./classesTest/jfree/chart";
 		File[] listFiles = getListJavaFiles(folder);
-
+        readFiles(listFiles);
 	}
 
 
