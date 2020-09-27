@@ -19,6 +19,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="last.edited.regexp" value="Sample Text" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -46,48 +47,45 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="2005" height="217" key="GridCell.Tab.0.bottom" timestamp="1601043805652">
+    <state x="705" y="292" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1601045656923">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="217" key="GridCell.Tab.0.bottom/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601043805652" />
-    <state width="2005" height="217" key="GridCell.Tab.0.center" timestamp="1601043805652">
+    <state x="705" y="292" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601045656923" />
+    <state x="784" y="426" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1601045260303">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="217" key="GridCell.Tab.0.center/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601043805652" />
-    <state width="2005" height="217" key="GridCell.Tab.0.left" timestamp="1601043805652">
+    <state x="784" y="426" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601045260303" />
+    <state width="2005" height="305" key="GridCell.Tab.0.bottom" timestamp="1601045364694">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="217" key="GridCell.Tab.0.left/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601043805652" />
-    <state width="2005" height="217" key="GridCell.Tab.0.right" timestamp="1601043805652">
+    <state width="2005" height="305" key="GridCell.Tab.0.bottom/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601045364694" />
+    <state width="2005" height="305" key="GridCell.Tab.0.center" timestamp="1601045364694">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="217" key="GridCell.Tab.0.right/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601043805652" />
-    <state width="2005" height="217" key="GridCell.Tab.1.bottom" timestamp="1601043805806">
+    <state width="2005" height="305" key="GridCell.Tab.0.center/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601045364694" />
+    <state width="2005" height="305" key="GridCell.Tab.0.left" timestamp="1601045364694">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="217" key="GridCell.Tab.1.bottom/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601043805806" />
-    <state width="2005" height="217" key="GridCell.Tab.1.center" timestamp="1601043805806">
+    <state width="2005" height="305" key="GridCell.Tab.0.left/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601045364694" />
+    <state width="2005" height="305" key="GridCell.Tab.0.right" timestamp="1601045364694">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="217" key="GridCell.Tab.1.center/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601043805806" />
-    <state width="2005" height="217" key="GridCell.Tab.1.left" timestamp="1601043805806">
+    <state width="2005" height="305" key="GridCell.Tab.0.right/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601045364694" />
+    <state width="2005" height="217" key="GridCell.Tab.1.bottom" timestamp="1601045348869">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="217" key="GridCell.Tab.1.left/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601043805806" />
-    <state width="2005" height="217" key="GridCell.Tab.1.right" timestamp="1601043805806">
+    <state width="2005" height="217" key="GridCell.Tab.1.bottom/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601045348869" />
+    <state width="2005" height="217" key="GridCell.Tab.1.center" timestamp="1601045348868">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="217" key="GridCell.Tab.1.right/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601043805806" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/TP1/Main.java</url>
-          <line>27</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state width="2005" height="217" key="GridCell.Tab.1.center/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601045348868" />
+    <state width="2005" height="217" key="GridCell.Tab.1.left" timestamp="1601045348868">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="217" key="GridCell.Tab.1.left/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601045348868" />
+    <state width="2005" height="217" key="GridCell.Tab.1.right" timestamp="1601045348868">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="217" key="GridCell.Tab.1.right/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601045348868" />
   </component>
 </project>
