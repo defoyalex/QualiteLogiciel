@@ -10,8 +10,10 @@ public class Main {
 	d'un répertoire */
 	public static File[] getListJavaFiles(String directory){
 		File files = new File(directory);
-		if(!files.isDirectory())  //si c'est un dossier et non un fichier
+		if(!files.isDirectory()){  //si c'est un dossier et non un fichier
 			return null;
+		}
+		System.out.println("files is directory? " + files.isDirectory());
 		FileFilter filter = new FileFilter(){ //sert à ne conserver que les fichiers java
 			public boolean accept(File files){
 				return files.getName().endsWith("java");
@@ -24,7 +26,6 @@ public class Main {
 	
 	// Lis une liste de fichiers 0
 	public static void readFiles(File[] files){
-		
 		for(int i=0; i<files.length; i++){
 			File file = files[i];
 			String fileToString;
@@ -63,6 +64,7 @@ public class Main {
 	public static void main (String[] args) {
 		String folder = "./classesTest/jfree/chart";
 		File[] listFiles = getListJavaFiles(folder);
+		System.out.println("taille de listFiles = " +listFiles.length);
         readFiles(listFiles);
 	}
 
