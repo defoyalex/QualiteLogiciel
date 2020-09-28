@@ -52,9 +52,13 @@ public class Main {
                             }
                             line = line + nextLine; //tant qu'on trouve pas la fin de la classe, on concatène chaque ligne avec la précédente
                         }
-                        System.out.println("================= BEGINNING OF CLASS =================");
-                        System.out.println("" + line);
-                        System.out.println("======================================================");
+//                        System.out.println("================= BEGINNING OF CLASS =================");
+//                        System.out.println("" + line);
+//                        System.out.println("======================================================");
+
+                        classeMetriquesInString = line;
+                        ClasseMetriques nouvelleClasse = new ClasseMetriques(classeMetriquesInString);
+                        classeMetriques.add(nouvelleClasse);
                     }
                 }
                 reader.close();
@@ -62,8 +66,6 @@ public class Main {
                 System.out.println("File not found");
                 e.printStackTrace();
             }
-			ClasseMetriques nouvelleClasse = new ClasseMetriques(classeMetriquesInString);
-			classeMetriques.add(nouvelleClasse);
         }
 		return classeMetriques;
 
@@ -78,8 +80,8 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        String folder = "./classesTest/jfree/chart";
-        //String folder = "E:/Documents/GitHub/QualiteLogiciel/TP1/classesTest/jfree/chart";
+        //String folder = "./classesTest/jfree/chart";
+        String folder = "E:/Documents/GitHub/QualiteLogiciel/TP1/classesTest/jfree/chart";
         File[] listFiles = getListJavaFiles(folder);
 
         System.out.println("taille de listFiles = " + listFiles.length);
