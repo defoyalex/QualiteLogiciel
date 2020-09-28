@@ -32,7 +32,6 @@ public class Main {
         ArrayList<ClasseMetriques> classeMetriques = new ArrayList<ClasseMetriques>();
         for (int i = 0; i < files.length; i++) {
             File file = files[i];
-            String classeMetriquesInString = "";
 
             try {
                 Scanner reader = new Scanner(file);
