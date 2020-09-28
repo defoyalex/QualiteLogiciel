@@ -10,7 +10,7 @@ public abstract class Metriques{
 	protected int dc;
 	protected double bc;
 
-	public boolean isComment(String line){
+	public String isComment(String line){
 		Pattern singleLine = Pattern.compile("//");
 		Pattern multipleLineBeginning = Pattern.compile("/\\*");  //pour "/*"
 		Pattern multipleLineEnding = Pattern.compile("\\*/"); //pour "*/"
@@ -21,14 +21,16 @@ public abstract class Metriques{
 		Matcher multipleLineEndingMatcher = multipleLineEnding.matcher(line);
 		Matcher javadocMatcher = javadoc.matcher(line);
 
-		boolean isItComment = false;
 
-		if (singleLineMatcher.find() ||
-				multipleLineBeginningMatcher.find() ||
+		if (singleLineMatcher.find()){
+			return "Single line";
+		}
+		
+		if(		multipleLineBeginningMatcher.find() ||
 				multipleLineEndingMatcher.find() ||
 				javadocMatcher.find()) {
-			isItComment = true;
+			return "Multiple line";
 		}
-		return isItComment;
+		return "No comment";
 	}
 }
