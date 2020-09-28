@@ -10,6 +10,7 @@ public class Main {
 	d'un répertoire */
 	public static File[] getListJavaFiles(String directory){
 		File files = new File(directory);
+
 		if(!files.isDirectory()){  //si c'est un dossier et non un fichier
 			return null;
 		}
@@ -62,8 +63,9 @@ public class Main {
 
 
 	public static void main (String[] args) {
-		String folder = "./classesTest/jfree/chart";
+		String folder = "./classesTest/jfree/chart"; //E:\Documents\GitHub\QualiteLogiciel\TP1\classesTest\jfree\chart
 		File[] listFiles = getListJavaFiles(folder);
+
 		System.out.println("taille de listFiles = " +listFiles.length);
         readFiles(listFiles);
 	}
