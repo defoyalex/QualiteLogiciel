@@ -1,5 +1,5 @@
 import java.io.*;
-import java.util.Scanner;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -28,10 +28,11 @@ public class Main {
     }
 
     // Lis une liste de fichiers 0
-    public static void readFiles(File[] files) {
+    public static ArrayList<ClasseMetriques> readFiles(File[] files) {
+		ArrayList<ClasseMetriques> classeMetriques = new ArrayList<ClasseMetriques>();
         for (int i = 0; i < files.length; i++) {
             File file = files[i];
-            String fileToString;
+            String classeMetriquesInString = "";
 
             try {
                 Scanner reader = new Scanner(file);
@@ -61,7 +62,10 @@ public class Main {
                 System.out.println("File not found");
                 e.printStackTrace();
             }
+			ClasseMetriques nouvelleClasse = new ClasseMetriques(classeMetriquesInString);
+			classeMetriques.add(nouvelleClasse);
         }
+		return classeMetriques;
 
     }
 
@@ -74,11 +78,12 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        //String folder = "./classesTest/jfree/chart";
-        String folder = "E:/Documents/GitHub/QualiteLogiciel/TP1/classesTest/jfree/chart";
+        String folder = "./classesTest/jfree/chart";
+        //String folder = "E:/Documents/GitHub/QualiteLogiciel/TP1/classesTest/jfree/chart";
         File[] listFiles = getListJavaFiles(folder);
 
         System.out.println("taille de listFiles = " + listFiles.length);
-        readFiles(listFiles);
+		ArrayList<ClasseMetriques> classeMetriques = readFiles(listFiles);
+        System.out.println("taille de classeMetriques = " + classeMetriques.size());
     }
 }	
