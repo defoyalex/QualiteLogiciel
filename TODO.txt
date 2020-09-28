@@ -1,6 +1,4 @@
 Main:
--> Lors de la lecture des fichiers, concaténer toutes les lignes pour former une longue string qui va etre notre class.
-    (voir pour si on a des classes à l'intérieur de classes)
 -> Lorsque l'on donne un dossier en input, récursivement passer sur tous les fichiers.
 
 ClasseMetriques:

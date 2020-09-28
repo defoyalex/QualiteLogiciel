@@ -74,7 +74,7 @@ public class Main {
     // Pour vérifier si la ligne est le début d'une classe
     public static boolean isClass(String line) {
         //On vérifie si ça match le mot class entourer de whitespace
-        Pattern pattern = Pattern.compile("(^public)(\\s)(class)(\\s)"); //notre pattern recherché est "public" situé en début de ligne suivit d'un espace puis "classe" suivit d'une autre espace
+        Pattern pattern = Pattern.compile("(^public)(\\s)((final(\\s)(class))|(abstract(\\s)(class))|enum|interface|class)(\\s)"); //notre pattern recherché est "public" situé en début de ligne + les différents types de classes possibles
         boolean ifItFinds = pattern.matcher(line).find(); //s'il trouve notre pattern à l'intérieur de la ligne de code
         return ifItFinds;
     }
