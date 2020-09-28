@@ -12,9 +12,11 @@ public class ClasseMetriques extends Metriques{
 		String lines[] = classInString.split("\\r?\\n");
 		Pattern p = Pattern.compile("(\\w*).java");
         Matcher m = p.matcher(path);
-        while(m.find()) {
-            System.out.println(m.group());
-        }
+		m.find();
+        this.className = m.group().replace(".java","");
+		this.chemin = path.replace(m.group(),"");
+		System.out.println(this.chemin);
+		System.out.println(this.className);
 		System.out.println(lines.length);
 		for(int i=0; i<lines.length; i++){
 			String line = lines[i];

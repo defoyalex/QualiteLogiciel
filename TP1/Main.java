@@ -56,6 +56,7 @@ public class Main {
 //                        System.out.println("======================================================");
 
                          ClasseMetriques nouvelleClasse = new ClasseMetriques(files[i].toString(),line);
+						 classeMetriques.add(nouvelleClasse);
                     }
                 }
                 reader.close();

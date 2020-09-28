@@ -3,12 +3,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public abstract class Metriques{
-	private String chemin;
-	private String className;
-	private int loc;
-	private int cloc;
-	private int dc;
-	private double bc;
+	protected String chemin;
+	protected String className;
+	protected int loc;
+	protected int cloc;
+	protected int dc;
+	protected double bc;
 
 	public boolean isComment(String line){
 		Pattern singleLine = Pattern.compile("//");
