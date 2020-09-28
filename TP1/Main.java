@@ -39,6 +39,9 @@ public class Main {
                 while (reader.hasNextLine()) {
                     String line = reader.nextLine();
 
+//                    if (isComment(line)) {
+//                        //TODO si la ligne est un commentaire/javadoc pour une classe
+//                    }
                     if (isClass(line)) {
                         //TODO si la ligne est le début d'une classe
                         while (true) {
@@ -49,7 +52,7 @@ public class Main {
                                 line = line + "\n" + nextLine;
                                 break;
                             }
-                            line = line + "\n" + nextLine; //tant qu'on trouve pas la fin de la classe, on concatène chaque ligne avec la précédente
+                            line = line + "\n" + nextLine; //si on trouve pas la fin de la classe, on concatène chaque ligne avec la précédente
                         }
 //                        System.out.println("================= BEGINNING OF CLASS =================");
 //                        System.out.println("" + line);

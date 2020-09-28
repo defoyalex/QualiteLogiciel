@@ -1,9 +1,8 @@
 Main:
 -> Compter les lignes de commentaires/javadoc précédent des classes puis push cela dans le constructor de ClasseMetriques.
 -> Lorsque l'on donne un dossier en input, récursivement passer sur tous les fichiers.
-
-Metriques:
-->Comptage des lignes de commentaires situés entre "/*" et "*/"
+-> Comptage des lignes de commentaires situés entre "/*" et "*/"
 
 ClasseMetriques:
+-> Comptage des lignes de commentaires situés entre "/*" et "*/"
 -> Détection de methode (isMethod) en regardant si après un "public", "private" ou "protected" on a une paire de parenthèses immédiatement suivies d'accolades.
