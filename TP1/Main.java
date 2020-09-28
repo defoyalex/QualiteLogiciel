@@ -11,10 +11,12 @@ public class Main {
 	public static File[] getListJavaFiles(String directory){
 		File files = new File(directory);
 
-		if(!files.isDirectory()){  //si c'est un dossier et non un fichier
+		if(!files.isDirectory()){  //si c'est pas un dossier et plutôt un fichier
 			return null;
 		}
+
 		System.out.println("files is directory? " + files.isDirectory());
+
 		FileFilter filter = new FileFilter(){ //sert à ne conserver que les fichiers java
 			public boolean accept(File files){
 				return files.getName().endsWith("java");
@@ -48,19 +50,14 @@ public class Main {
 		}
 				
 	}
-	
-	
+
 	// Pour vérifier si la ligne est le début d'une classe 
 	public static boolean isClass(String line){
 		//On vérifie si ça match le mot class entourer de whitespace
-		Pattern singleLine = Pattern.compile("\\s(class)\\s");
-
-		return false; //TODO
+		Pattern pattern = Pattern.compile("(^public)(\\s)(class)(\\s)"); //notre pattern recherché est "public" situé en début de ligne suivit d'un espace puis "classe" suivit d'une autre espace
+		boolean ifItFinds = pattern.matcher(line).find(); //s'il trouve notre pattern à l'intérieur de la ligne de code
+		return ifItFinds;
 	} 
-	
-
-
-
 
 	public static void main (String[] args) {
 		//String folder = "./classesTest/jfree/chart";
@@ -70,7 +67,4 @@ public class Main {
 		System.out.println("taille de listFiles = " +listFiles.length);
         readFiles(listFiles);
 	}
-
-
-
 }	
