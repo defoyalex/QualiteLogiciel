@@ -13,13 +13,13 @@ public abstract class Metriques{
 	public boolean isComment(String line){
 		Pattern singleLine = Pattern.compile("//");
 		Pattern multipleLineBeginning = Pattern.compile("/*");
-		Pattern multipleLinecontinuation = Pattern.compile("*");
+		Pattern multipleLineContinuation = Pattern.compile("*");
 		Pattern multipleLineEnding = Pattern.compile("*/");
 		Pattern javadoc = Pattern.compile("**");
 
 		Matcher singleLineMatcher = singleLine.matcher(line);
 		Matcher multipleLineBeginningMatcher = multipleLineBeginning.matcher(line);
-		Matcher multipleLineContinuationMatcher = multipleLinecontinuation.matcher(line);
+		Matcher multipleLineContinuationMatcher = multipleLineContinuation.matcher(line);
 		Matcher multipleLineEndingMatcher = multipleLineEnding.matcher(line);
 		Matcher javadocMatcher = javadoc.matcher(line);
 
