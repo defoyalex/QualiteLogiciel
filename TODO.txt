@@ -1,4 +1,5 @@
 Main:
+-> Compter les lignes de commentaires/javadoc précédent des classes puis push cela dans le constructor de ClasseMetriques.
 -> Lorsque l'on donne un dossier en input, récursivement passer sur tous les fichiers.
 
 Metriques:
