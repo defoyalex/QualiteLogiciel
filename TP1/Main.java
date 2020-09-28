@@ -29,7 +29,7 @@ public class Main {
 
     // Lis une liste de fichiers 0
     public static ArrayList<ClasseMetriques> readFiles(File[] files) {
-		ArrayList<ClasseMetriques> classeMetriques = new ArrayList<ClasseMetriques>();
+        ArrayList<ClasseMetriques> classeMetriques = new ArrayList<ClasseMetriques>();
         for (int i = 0; i < files.length; i++) {
             File file = files[i];
             String classeMetriquesInString = "";
@@ -57,7 +57,7 @@ public class Main {
 //                        System.out.println("======================================================");
 
                         classeMetriquesInString = line;
-                        ClasseMetriques nouvelleClasse = new ClasseMetriques(classeMetriquesInString);
+                        ClasseMetriques nouvelleClasse = new ClasseMetriques(files[i],classeMetriquesInString);
                         classeMetriques.add(nouvelleClasse);
                     }
                 }
@@ -67,14 +67,14 @@ public class Main {
                 e.printStackTrace();
             }
         }
-		return classeMetriques;
+        return classeMetriques;
 
     }
 
     // Pour vérifier si la ligne est le début d'une classe
     public static boolean isClass(String line) {
         //On vérifie si ça match le mot class entourer de whitespace
-        Pattern pattern = Pattern.compile("(^public)(\\s)((final(\\s)(class))|(abstract(\\s)(class))|enum|interface|class)(\\s)"); //notre pattern recherché est "public" situé en début de ligne + les différents types de classes possibles
+        Pattern pattern = Pattern.compile("(^public)(\\s)((final(\\s)class)|(abstract(\\s)class)|enum|interface|class)(\\s)"); //notre pattern recherché est "public" situé en début de ligne + les différents types de classes possibles
         boolean ifItFinds = pattern.matcher(line).find(); //s'il trouve notre pattern à l'intérieur de la ligne de code
         return ifItFinds;
     }
@@ -85,7 +85,7 @@ public class Main {
         File[] listFiles = getListJavaFiles(folder);
 
         System.out.println("taille de listFiles = " + listFiles.length);
-		ArrayList<ClasseMetriques> classeMetriques = readFiles(listFiles);
+        ArrayList<ClasseMetriques> classeMetriques = readFiles(listFiles);
         System.out.println("taille de classeMetriques = " + classeMetriques.size());
     }
 }	
