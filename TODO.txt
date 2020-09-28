@@ -1,5 +1,8 @@
 Main:
 -> Lorsque l'on donne un dossier en input, récursivement passer sur tous les fichiers.
 
+Metriques:
+->Comptage des lignes de commentaires situés entre "/*" et "*/"
+
 ClasseMetriques:
 -> Détection de methode (isMethod) en regardant si après un "public", "private" ou "protected" on a une paire de parenthèses immédiatement suivies d'accolades.
