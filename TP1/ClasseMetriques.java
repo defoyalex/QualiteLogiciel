@@ -8,8 +8,13 @@ public class ClasseMetriques extends Metriques{
 	private MethodeMetriques[] methodesMetriques;
 	private double wmc;
 	
-	public ClasseMetriques(String classInString){
-		//TODO
+	public ClasseMetriques(String path, String classInString){
+		String lines[] = classInString.split("\\r?\\n");
+		System.out.println(lines.length);
+		for(int i=0; i<lines.length; i++){
+			String line = lines[i];
+			
+		}
 	}
 
 }

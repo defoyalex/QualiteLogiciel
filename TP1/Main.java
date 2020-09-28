@@ -47,17 +47,17 @@ public class Main {
                             Pattern p = Pattern.compile("(^})"); //on regarde pour une braquette en début de ligne signifiant la fin de la classe
                             Matcher m = p.matcher(nextLine);
                             if (m.find()) { //lorsqu'on trouve la fin de la classe, on concatène une dernière ligne puis on break du loop
-                                line = line + nextLine;
+                                line = line + "\n" + nextLine;
                                 break;
                             }
-                            line = line + nextLine; //tant qu'on trouve pas la fin de la classe, on concatène chaque ligne avec la précédente
+                            line = line + "\n" + nextLine; //tant qu'on trouve pas la fin de la classe, on concatène chaque ligne avec la précédente
                         }
 //                        System.out.println("================= BEGINNING OF CLASS =================");
 //                        System.out.println("" + line);
 //                        System.out.println("======================================================");
 
                         classeMetriquesInString = line;
-                        ClasseMetriques nouvelleClasse = new ClasseMetriques(files[i],classeMetriquesInString);
+                        ClasseMetriques nouvelleClasse = new ClasseMetriques(files[i].toString(),classeMetriquesInString);
                         classeMetriques.add(nouvelleClasse);
                     }
                 }
@@ -80,8 +80,8 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        //String folder = "./classesTest/jfree/chart";
-        String folder = "E:/Documents/GitHub/QualiteLogiciel/TP1/classesTest/jfree/chart";
+        String folder = "./classesTest/jfree/chart";
+        //String folder = "E:/Documents/GitHub/QualiteLogiciel/TP1/classesTest/jfree/chart";
         File[] listFiles = getListJavaFiles(folder);
 
         System.out.println("taille de listFiles = " + listFiles.length);
