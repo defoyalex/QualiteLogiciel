@@ -12,19 +12,26 @@ public abstract class Metriques{
 
 	public boolean isComment(String line){
 		Pattern singleLine = Pattern.compile("//");
-		Pattern multipleLine = Pattern.compile("/*");
-		Pattern javadoc = Pattern.compile("/u002A/u002A");
+		Pattern multipleLineBeginning = Pattern.compile("/*");
+		Pattern multipleLinecontinuation = Pattern.compile("*");
+		Pattern multipleLineEnding = Pattern.compile("*/");
+		Pattern javadoc = Pattern.compile("**");
 
 		Matcher singleLineMatcher = singleLine.matcher(line);
-		Matcher multipleLineMatcher = multipleLine.matcher(line);
+		Matcher multipleLineBeginningMatcher = multipleLineBeginning.matcher(line);
+		Matcher multipleLineContinuationMatcher = multipleLinecontinuation.matcher(line);
+		Matcher multipleLineEndingMatcher = multipleLineEnding.matcher(line);
 		Matcher javadocMatcher = javadoc.matcher(line);
 
 		boolean isItComment = false;
 
-		if (singleLineMatcher.find() || multipleLineMatcher.find() || javadocMatcher.find()) {
+		if (singleLineMatcher.find() ||
+				multipleLineBeginningMatcher.find() ||
+				multipleLineEndingMatcher.find() ||
+				multipleLineContinuationMatcher.find() ||
+				javadocMatcher.find()) {
 			isItComment = true;
 		}
 		return isItComment;
 	}
-	
 }
