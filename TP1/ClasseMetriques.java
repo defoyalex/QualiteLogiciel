@@ -6,7 +6,6 @@ import java.util.regex.Pattern;
 
 
 public class ClasseMetriques extends Metriques {
-    private MethodeMetriques[] methodesMetriques;
     private double wmc;
 
     public ClasseMetriques(String path, String classInString) {
@@ -16,7 +15,7 @@ public class ClasseMetriques extends Metriques {
         m.find();
         this.className = m.group().replace(".java", "");
         this.chemin = path.replace(m.group(), "");
-        this.countLines(classInString);
+        countLines(classInString);
 
     }
 
@@ -52,7 +51,7 @@ public class ClasseMetriques extends Metriques {
                         }
                         if (numberOfBrackets == 0) { //on sait qu'on a la dernière ligne de la méthode lorsque on arrive à zéro
                             //TODO juste etre sur que ca marche
-                            MethodeMetriques newMethod = new MethodeMetriques(this.chemin, this.className,methodToString);
+                            MethodeMetriques newMethod = new MethodeMetriques(this.chemin, this.className, methodToString);
                             methodeMetriques.add(newMethod);
                             break;
                         } else {
