@@ -81,7 +81,8 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        String folder = "./classesTest/jfree/chart";
+        //String folder = "./classesTest/jfree/chart";
+		String folder = "./";
         //String folder = "E:/Documents/GitHub/QualiteLogiciel/TP1/classesTest/jfree/chart";
         File[] listFiles = getListJavaFiles(folder);
 

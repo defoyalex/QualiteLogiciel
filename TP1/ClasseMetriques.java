@@ -56,9 +56,14 @@ public class ClasseMetriques extends Metriques{
 		
 	}
 	
-	public boolean singleLineComment(String line){
-		return false; //TODO
-		
+	public void singleLineComment(String line){
+		Pattern singleLine = Pattern.compile("\\S+\\s*//");
+		Matcher singleLineMatcher = singleLine.matcher(line);
+		if (singleLineMatcher.find()){
+			loc++;//Print this line
+			System.out.println(line);
+		}
+		cloc++;
 	}
 	
 	public boolean multipleLineComment(String line){
