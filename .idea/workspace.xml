@@ -22,7 +22,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last.edited.regexp" value=" public class Blabla" />
+    <property name="last.edited.regexp" value="}" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
@@ -60,38 +60,38 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="784" y="426" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601045260303" />
-    <state width="2005" height="189" key="GridCell.Tab.0.bottom" timestamp="1601310187169">
+    <state width="2005" height="283" key="GridCell.Tab.0.bottom" timestamp="1601486351886">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="189" key="GridCell.Tab.0.bottom/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601310187169" />
-    <state width="2005" height="189" key="GridCell.Tab.0.center" timestamp="1601310187169">
+    <state width="2005" height="283" key="GridCell.Tab.0.bottom/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601486351886" />
+    <state width="2005" height="283" key="GridCell.Tab.0.center" timestamp="1601486351886">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="189" key="GridCell.Tab.0.center/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601310187169" />
-    <state width="2005" height="189" key="GridCell.Tab.0.left" timestamp="1601310187169">
+    <state width="2005" height="283" key="GridCell.Tab.0.center/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601486351886" />
+    <state width="2005" height="283" key="GridCell.Tab.0.left" timestamp="1601486351886">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="189" key="GridCell.Tab.0.left/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601310187169" />
-    <state width="2005" height="189" key="GridCell.Tab.0.right" timestamp="1601310187169">
+    <state width="2005" height="283" key="GridCell.Tab.0.left/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601486351886" />
+    <state width="2005" height="283" key="GridCell.Tab.0.right" timestamp="1601486351886">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="189" key="GridCell.Tab.0.right/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601310187169" />
-    <state width="2005" height="239" key="GridCell.Tab.1.bottom" timestamp="1601254658229">
+    <state width="2005" height="283" key="GridCell.Tab.0.right/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601486351886" />
+    <state width="2005" height="283" key="GridCell.Tab.1.bottom" timestamp="1601486351887">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="239" key="GridCell.Tab.1.bottom/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601254658229" />
-    <state width="2005" height="239" key="GridCell.Tab.1.center" timestamp="1601254658229">
+    <state width="2005" height="283" key="GridCell.Tab.1.bottom/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601486351887" />
+    <state width="2005" height="283" key="GridCell.Tab.1.center" timestamp="1601486351886">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="239" key="GridCell.Tab.1.center/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601254658229" />
-    <state width="2005" height="239" key="GridCell.Tab.1.left" timestamp="1601254658229">
+    <state width="2005" height="283" key="GridCell.Tab.1.center/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601486351886" />
+    <state width="2005" height="283" key="GridCell.Tab.1.left" timestamp="1601486351886">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="239" key="GridCell.Tab.1.left/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601254658229" />
-    <state width="2005" height="239" key="GridCell.Tab.1.right" timestamp="1601254658229">
+    <state width="2005" height="283" key="GridCell.Tab.1.left/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601486351886" />
+    <state width="2005" height="283" key="GridCell.Tab.1.right" timestamp="1601486351886">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="239" key="GridCell.Tab.1.right/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601254658229" />
+    <state width="2005" height="283" key="GridCell.Tab.1.right/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601486351886" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/QualiteLogiciel$Main.ic" NAME="Main Coverage Results" MODIFIED="1601252074984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

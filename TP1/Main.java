@@ -39,9 +39,6 @@ public class Main {
                 while (reader.hasNextLine()) {
                     String line = reader.nextLine();
 
-//                    if (isComment(line)) {
-//                        //TODO si la ligne est un commentaire/javadoc pour une classe
-//                    }
                     if (isClass(line)) {
                         //TODO si la ligne est le début d'une classe
                         while (true) {
@@ -54,10 +51,6 @@ public class Main {
                             }
                             line = line + "\n" + nextLine; //si on trouve pas la fin de la classe, on concatène chaque ligne avec la précédente
                         }
-//                        System.out.println("================= BEGINNING OF CLASS =================");
-//                        System.out.println("" + line);
-//                        System.out.println("======================================================");
-
                          ClasseMetriques nouvelleClasse = new ClasseMetriques(files[i].toString(),line);
 						 classeMetriques.add(nouvelleClasse);
                     }
@@ -82,8 +75,8 @@ public class Main {
 
     public static void main(String[] args) {
         //String folder = "./classesTest/jfree/chart";
-		String folder = "./";
-        //String folder = "E:/Documents/GitHub/QualiteLogiciel/TP1/classesTest/jfree/chart";
+		//String folder = "./";
+        String folder = "E:/Documents/GitHub/QualiteLogiciel/TP1/classesTest/jfree/chart";
         File[] listFiles = getListJavaFiles(folder);
 
         System.out.println("taille de listFiles = " + listFiles.length);

@@ -8,7 +8,7 @@ public class MethodeMetriques extends Metriques{
 	private String methodName;
 	private double cc;
 
-	public MethodeMetriques(String methodInString){
+	public MethodeMetriques(String chemin, String className, String methodInString){
 		
 		//TODO
 	}
