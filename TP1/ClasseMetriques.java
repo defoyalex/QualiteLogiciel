@@ -51,6 +51,7 @@ public class ClasseMetriques extends Metriques {
                         }
                         if (numberOfBrackets == 0) { //on sait qu'on a la dernière ligne de la méthode lorsque on arrive à zéro
                             //TODO juste etre sur que ca marche
+                            methodToString = methodToString + "\n" + currentLine;
                             MethodeMetriques newMethod = new MethodeMetriques(this.chemin, this.className, methodToString);
                             methodeMetriques.add(newMethod);
                             break;
