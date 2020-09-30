@@ -41,6 +41,7 @@ public class MethodeMetriques extends Metriques {
                     break;
             }
         }
+        System.out.println("Ligne de code : " + loc + " Ligne de commentaire :" + cloc + " dans la methode " + this.className);
     }
 
 
