@@ -11,18 +11,26 @@ public class MethodeMetriques extends Metriques {
     private double cc;
 
     public MethodeMetriques(String chemin, String className, String methodInString) {
-        //TODO
+
         this.chemin = chemin;
         this.className = className;
-        analyseLines(methodInString);
+
+        String lines[] = methodInString.split("\\r?\\n");
+
+        Pattern p = Pattern.compile("(\\w*)(\\s)?(\\u0028)");
+        Matcher m = p.matcher(lines[1]); //line[0] est une string vide
+        m.find();
+        this.methodName = m.group().replace("(", "");
+
+        analyseLines(lines);
     }
 
-    private void analyseLines(String methodInString) {
-        String lines[] = methodInString.split("\\r?\\n");
-        for (int i = 0; i < lines.length; i++) {
+    private void analyseLines(String[] lines) {
+
+        for (int i = 1; i < lines.length; i++) { //on commence à i=1 puisque i=0 est une string vide
             String line = lines[i];
             String isComment = this.isComment(line);
-            
+
             switch (isComment) {
                 case "Single line":
                     if (isCodeAndComment(line)) {
@@ -41,7 +49,7 @@ public class MethodeMetriques extends Metriques {
                     break;
             }
         }
-        System.out.println("Ligne de code : " + loc + " Ligne de commentaire :" + cloc + " dans la methode " + this.methodName + " à l'intérieur de la classe " + this.className);
+        System.out.println("Ligne de code : " + loc + " Ligne de commentaire :" + cloc + " dans la methode \"" + this.methodName + "\" à l'intérieur de la classe \"" + this.className + "\"");
     }
 
 
