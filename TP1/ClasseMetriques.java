@@ -31,14 +31,21 @@ public class ClasseMetriques extends Metriques{
 			if(!line.isEmpty()){
 				if(this.isMethod(line)){
 					//TODO line is the start of a method
-				}else{		
-					
+				}else{	
+					//Switch selon le type de commentaire ou s'il n'y a pas de commentaire
 					switch(isComment) {
 						case "Single line":
-							this.singleLineComment(line);
+							if(isCodeAndComment(line)){
+								this.loc++;
+							}
+							cloc++;
 							break;
 						case "Multiple line":
-							this.multipleLineComment(line);
+							if(isCodeAndComment(line)){
+								this.loc++;
+							}
+
+							i = countLineComment(lines, i);
 							break;
 						case "No comment":
 							this.loc++;
@@ -49,21 +56,34 @@ public class ClasseMetriques extends Metriques{
 				}
 			}
 		}
+		System.out.println("Ligne de code : " + loc + " Ligne de commentaire :" + cloc + " dans la classe " + this.className);
 	}
 	
 	public boolean isMethod(String line){
-		return false; //TODO
-		
-	}
+        Pattern pattern = Pattern.compile("(public|private|protected)(\\s)+.(\\u0028)(.)(\\u0029)(\\s)*(\\u007b)");
+        //u0028 = "(", u0029 = ")" et u007b = "{"
+
+        boolean ifItFinds = pattern.matcher(line).find(); //s'il trouve notre pattern à l'intérieur de la ligne de code
+        return ifItFinds;
+    }
 	
-	public void singleLineComment(String line){
-		Pattern singleLine = Pattern.compile("\\S+\\s*//");
-		Matcher singleLineMatcher = singleLine.matcher(line);
-		if (singleLineMatcher.find()){
-			loc++;//Print this line
-			System.out.println(line);
+	/*Compte la quantité de lignes de commentaires et renvoie la nouvelle position
+	dans le tableau de lignes de code après les commentaires.
+	*/
+	public int countLineComment(String[] lines, int i){
+		
+		while(!isEndMultipleLineComment(lines[i])){
+			this.cloc++;
+			
+			//Si on atteint la fin tu tableau sans trouver la fin du commentaire
+			if(i==lines.length){
+				
+				return i;
+			}
+			i++;
 		}
-		cloc++;
+		this.cloc++;
+		return i;
 	}
 	
 	public boolean multipleLineComment(String line){

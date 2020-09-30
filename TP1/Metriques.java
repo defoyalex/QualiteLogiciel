@@ -11,26 +11,70 @@ public abstract class Metriques{
 	protected double bc;
 
 	public String isComment(String line){
-		Pattern singleLine = Pattern.compile("//");
-		Pattern multipleLineBeginning = Pattern.compile("/\\*");  //pour "/*"
-		Pattern multipleLineEnding = Pattern.compile("\\*/"); //pour "*/"
-		Pattern javadoc = Pattern.compile("\\*\\*"); //pour "**"
-
-		Matcher singleLineMatcher = singleLine.matcher(line);
-		Matcher multipleLineBeginningMatcher = multipleLineBeginning.matcher(line);
-		Matcher multipleLineEndingMatcher = multipleLineEnding.matcher(line);
-		Matcher javadocMatcher = javadoc.matcher(line);
 
 
-		if (singleLineMatcher.find()){
+		if (isSingleLineComment(line)){
 			return "Single line";
 		}
 		
-		if(		multipleLineBeginningMatcher.find() ||
-				multipleLineEndingMatcher.find() ||
-				javadocMatcher.find()) {
+		if(		isStartMultipleLineComment(line) ||
+				isEndMultipleLineComment(line) ||
+				isJavadocMultipleLineComment(line)) {
 			return "Multiple line";
 		}
 		return "No comment";
+	}
+	
+	//Vérifie si la ligne contient un commentaire d'une ligne
+	public boolean isSingleLineComment(String line){
+		Pattern singleLine = Pattern.compile("//");
+		Matcher singleLineMatcher = singleLine.matcher(line);
+		if (singleLineMatcher.find()){
+			return true;
+		}
+		return false;
+	}
+	
+	//Vérifie si la ligne contient le début d'un commentaire de plusieurs lignes
+	public boolean isStartMultipleLineComment(String line){
+		Pattern multipleLineBeginning = Pattern.compile("/\\*");  //pour "/*"
+		Matcher multipleLineBeginningMatcher = multipleLineBeginning.matcher(line);
+		if (multipleLineBeginningMatcher.find()){
+			return true;
+		}
+		return false;
+	}
+	
+	//Vérifie si la ligne contient la fin d'un commentaire de plusieurs lignes
+	public boolean isEndMultipleLineComment(String line){
+		Pattern multipleLineEnding = Pattern.compile("\\*/"); //pour "*/"
+		Matcher multipleLineEndingMatcher = multipleLineEnding.matcher(line);
+		if (multipleLineEndingMatcher.find()){
+			return true;
+		}
+		return false;
+	}
+	
+	//Vérifie si la ligne contient la suite d'un commentaire JavaDoc
+	public boolean isJavadocMultipleLineComment(String line){
+		Pattern javadoc = Pattern.compile("\\*\\*"); //pour "**"
+		Matcher javadocMatcher = javadoc.matcher(line);
+		if (javadocMatcher.find()){
+			return true;
+		}
+		return false;
+	}
+	
+	//Vérifie s'il y a une ligne de code avant un commentaire
+	public boolean isCodeAndComment(String line){
+		Pattern singleLine = Pattern.compile("\\S+\\s*//");
+		Matcher singleLineMatcher = singleLine.matcher(line);
+		
+		Pattern multipleLine = Pattern.compile("\\S+\\s*/\\*");
+		Matcher multipleLineMatcher = singleLine.matcher(line);
+		if (singleLineMatcher.find() || multipleLineMatcher.find()){
+			return true;
+		}
+		return false;
 	}
 }
