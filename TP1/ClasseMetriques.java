@@ -78,8 +78,6 @@ public class ClasseMetriques extends Metriques {
                         case "No comment":
                             this.loc++;
                             break;
-                        default:
-                            // code block
                     }
                 }
             }
@@ -93,25 +91,6 @@ public class ClasseMetriques extends Metriques {
 
         boolean ifItFinds = pattern.matcher(line).find(); //s'il trouve notre pattern à l'intérieur de la ligne de code
         return ifItFinds;
-    }
-
-    /*Compte la quantité de lignes de commentaires et renvoie la nouvelle position
-    dans le tableau de lignes de code après les commentaires.
-    */
-    public int countLineComment(String[] lines, int i) {
-
-        while (!isEndMultipleLineComment(lines[i])) {
-            this.cloc++;
-
-            //Si on atteint la fin tu tableau sans trouver la fin du commentaire
-            if (i == lines.length) {
-
-                return i;
-            }
-            i++;
-        }
-        this.cloc++;
-        return i;
     }
 
 }

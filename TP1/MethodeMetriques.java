@@ -22,6 +22,7 @@ public class MethodeMetriques extends Metriques {
         for (int i = 0; i < lines.length; i++) {
             String line = lines[i];
             String isComment = this.isComment(line);
+            
             switch (isComment) {
                 case "Single line":
                     if (isCodeAndComment(line)) {
@@ -33,34 +34,15 @@ public class MethodeMetriques extends Metriques {
                     if (isCodeAndComment(line)) {
                         this.loc++;
                     }
-
                     i = countLineComment(lines, i);
                     break;
                 case "No comment":
                     this.loc++;
                     break;
-                default:
-                    // code block
             }
         }
     }
-    /*Compte la quantité de lignes de commentaires et renvoie la nouvelle position
-    dans le tableau de lignes de code après les commentaires.
-    */
-    public int countLineComment(String[] lines, int i) {
 
-        while (!isEndMultipleLineComment(lines[i])) {
-            this.cloc++;
 
-            //Si on atteint la fin tu tableau sans trouver la fin du commentaire
-            if (i == lines.length) {
-
-                return i;
-            }
-            i++;
-        }
-        this.cloc++;
-        return i;
-    }
 
 }
