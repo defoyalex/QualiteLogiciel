@@ -95,4 +95,15 @@ public abstract class Metriques{
 		this.cloc++;
 		return i;
 	}
+	
+	//Vérifie si c'est une ligne vide
+	public boolean isEmptyLine(String line){
+		Pattern nonWhiteSpace = Pattern.compile("\\S+");
+		Matcher matcherNonWhiteSpace = nonWhiteSpace.matcher(line);
+		
+		if (line.isEmpty() || !matcherNonWhiteSpace.find()){
+			return true;
+		}
+		return false;
+	}
 }
