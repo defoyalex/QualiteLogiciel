@@ -1,4 +1,5 @@
 import java.io.*;
+import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -6,7 +7,10 @@ import java.util.regex.Pattern;
 
 
 public class ClasseMetriques extends Metriques {
-    private double wmc;
+	/* Weighted Methods per class 
+	   Égale à la somme pondérée de complexité des méthodes*/
+    private float wmc; 
+	private ArrayList<MethodeMetriques> methodeMetriques;
 
     public ClasseMetriques(String path, String classInString) {
 
@@ -16,9 +20,24 @@ public class ClasseMetriques extends Metriques {
         this.className = m.group().replace(".java", "");
         this.chemin = path.replace(m.group(), "");
         countLines(classInString);
+		
+		this.dc = this.cloc/this.loc;
+		this.calculateWMC();
+		this.bc = this.dc/this.wmc;
+		
 
     }
+	
+	//Calcul la métrique Weighted Method per Class
+	public void calculateWMC(){
+		float sommePondérée = 0;
+		for(MethodeMetriques methodeMetrique: this.methodeMetriques){
+			sommePondérée+=methodeMetrique.getComplexity();
+		}
+		this.wmc = sommePondérée/this.methodeMetriques.size();
+	}
 
+	//Compte LOC, CLOC et trouve les méthodes
     public void countLines(String classInString) {
         String lines[] = classInString.split("\\r?\\n");
 
@@ -85,6 +104,7 @@ public class ClasseMetriques extends Metriques {
 			}
      			
         }
+		this.methodeMetriques = methodeMetriques;
         System.out.println("Ligne de code : " + loc + " Ligne de commentaire :" + cloc + " dans la classe " + this.className);
     }
 
@@ -94,5 +114,26 @@ public class ClasseMetriques extends Metriques {
 
         return pattern.matcher(line).find(); //s'il trouve notre pattern à l'intérieur de la ligne de code
     }
+	
+	public void writeCSV(String pathClass, String pathMethod){
+
+		String csv = this.chemin+","+this.className+","+this.loc+","+
+					 this.cloc+","+this.dc+","+this.wmc+","+this.bc+"\n";
+		
+		try (FileWriter f = new FileWriter(pathClass, true); 
+			 BufferedWriter b = new BufferedWriter(f); 
+			 PrintWriter p = new PrintWriter(b);) { 
+			 
+			 p.println(csv);  
+			 
+		} catch (IOException e) { 
+			e.printStackTrace(); 
+		}
+		
+		for(MethodeMetriques methodeMetriques: this.methodeMetriques){
+			methodeMetriques.writeCSV(pathMethod);
+		}
+
+	}
 
 }

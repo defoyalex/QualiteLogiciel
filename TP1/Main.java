@@ -6,32 +6,41 @@ import java.util.regex.Pattern;
 public class Main {
 
 
-    /* Fait un tableau avec tous les fichiers javas à partir du chemin
+    /* Fait un tableau avec tous les fichiers .java à partir du chemin
     d'un répertoire */
-    public static File[] getListJavaFiles(String directory) {
-        File files = new File(directory);
+    public static ArrayList<File> getListJavaFiles(String path) {
+        File directory = new File(path);
 
-        if (!files.isDirectory()) {  //si c'est pas un dossier et plutôt un fichier
+        if (!directory.isDirectory()) {  //si c'est pas un dossier et plutôt un fichier
             return null;
-        }
-
-        System.out.println("files is directory? " + files.isDirectory());
-
-        FileFilter filter = new FileFilter() { //sert à ne conserver que les fichiers java
-            public boolean accept(File files) {
-                return files.getName().endsWith("java");
-            }
-        };
-
-        File[] listFiles = files.listFiles(filter);
-        return listFiles;
+        } 
+		
+		//Fais un ArrayList de tous les fichiers dans le dossier
+		File[] files = directory.listFiles();
+		ArrayList<File> allJavaFiles = new ArrayList<File>();
+		
+		//Pour tout les objets File, ajoute à la liste si c'est un .java ou
+		//Fais un appel récursif si c'est un dossier, sinon rien.
+		for(File file: files){
+			if(file.getName().endsWith(".java")){
+				allJavaFiles.add(file);
+			}else if(file.isDirectory()){
+				ArrayList<File> newJavaFiles = getListJavaFiles(path+file.getName()+"/");
+				if(newJavaFiles != null){
+					newJavaFiles.addAll(allJavaFiles);
+					//allJavaFiles = newJavaFiles; DÉCOMMENTER SI ON VEUT PASSER TOUS LES DOSSIERS RÉCURSIVEMENT
+				}
+			}
+		}
+		
+		return allJavaFiles;
     }
 
     // Lis une liste de fichiers 0
-    public static ArrayList<ClasseMetriques> readFiles(File[] files) {
+    public static ArrayList<ClasseMetriques> readFiles(ArrayList<File> files) {
         ArrayList<ClasseMetriques> classeMetriques = new ArrayList<ClasseMetriques>();
-        for (int i = 0; i < files.length; i++) {
-            File file = files[i];
+        for (int i = 0; i < files.size(); i++) {
+            File file = files.get(i);
 
             try {
                 Scanner reader = new Scanner(file);
@@ -51,7 +60,7 @@ public class Main {
                             }
                             line = line + "\n" + nextLine; //si on trouve pas la fin de la classe, on concatène chaque ligne avec la précédente
                         }
-                         ClasseMetriques nouvelleClasse = new ClasseMetriques(files[i].toString(),line);
+                         ClasseMetriques nouvelleClasse = new ClasseMetriques(files.get(i).toString(),line);
 						 classeMetriques.add(nouvelleClasse);
                     }
                 }
@@ -72,15 +81,43 @@ public class Main {
         boolean ifItFinds = pattern.matcher(line).find(); //s'il trouve notre pattern à l'intérieur de la ligne de code
         return ifItFinds;
     }
+	
+	public static void writeCSV(ArrayList<ClasseMetriques> arrayMetriques, String folder){
+		File csvClass = new File(folder+"classes.csv");
+		File csvMethod = new File(folder+"methodes.csv");
+		
+		try{
+			FileWriter fwClass = new FileWriter(csvClass);
+			fwClass.write("chemin,class,classe_LOC,classe_CLOC,classe_DC,classe_WMC,classe_BC\n");
+			fwClass.close();
+			
+			
+			FileWriter fwMethod = new FileWriter(csvMethod);
+			fwMethod.write("chemin,class,methode,methode_LOC,methode_CLOC,methode_DC,methode_CC,methode_BC\n");
+			fwMethod.close();
+			
+			for(ClasseMetriques classeMetriques: arrayMetriques){
+				classeMetriques.writeCSV(folder+"classes.csv", folder+"methodes.csv");
+			}
+			
+
+		}catch(IOException e){
+			System.out.println("File not found");
+            e.printStackTrace();
+		}
+		
+	}
 
     public static void main(String[] args) {
         //String folder = "./classesTest/jfree/chart";
 		String folder = "./";
         //String folder = "E:/Documents/GitHub/QualiteLogiciel/TP1/classesTest/jfree/chart";
-        File[] listFiles = getListJavaFiles(folder);
+        ArrayList<File> listFiles = getListJavaFiles(folder);
 
-        System.out.println("taille de listFiles = " + listFiles.length);
+        System.out.println("taille de listFiles = " + listFiles.size());
         ArrayList<ClasseMetriques> classeMetriques = readFiles(listFiles);
         System.out.println("taille de classeMetriques = " + classeMetriques.size());
+		
+		writeCSV(classeMetriques, folder);
     }
 }	

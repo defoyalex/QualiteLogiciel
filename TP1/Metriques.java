@@ -5,9 +5,13 @@ import java.util.regex.Pattern;
 public abstract class Metriques{
 	protected String chemin;
 	protected String className;
-	protected int loc;
-	protected int cloc;
-	protected int dc;
+	protected int loc; //Nombre de ligne de code
+	protected int cloc; // Nombre de ligne de commentaire
+	protected double dc; //Densité de commentaire CLOC/LOC
+	
+	/* Degré selon lequel une méthode ou class est bien commentée
+	   Méthode : dc/cc
+	   classe : dc/wmc */
 	protected double bc;
 
 	public String isComment(String line){
