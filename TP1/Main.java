@@ -27,7 +27,7 @@ public class Main {
                 ArrayList<File> newJavaFiles = getListJavaFiles(path + file.getName() + "/");
                 if (newJavaFiles != null) {
                     newJavaFiles.addAll(allJavaFiles);
-                    //allJavaFiles = newJavaFiles; DÉCOMMENTER SI ON VEUT PASSER TOUS LES DOSSIERS RÉCURSIVEMENT
+                    allJavaFiles = newJavaFiles; //DÉCOMMENTER SI ON VEUT PASSER TOUS LES DOSSIERS RÉCURSIVEMENT
                 }
             }
         }
@@ -117,7 +117,7 @@ public class Main {
     public static void main(String[] args) {
         //String folder = "./classesTest/jfree/chart";
         //String folder = "./";
-        String folder = "E:/Documents/GitHub/QualiteLogiciel/TP1/classesTest/jfree/chart";
+        String folder = "E:/Documents/GitHub/QualiteLogiciel/TP1/classesTest/jfree/";
         //String folder = "E:/Documents/GitHub/QualiteLogiciel/TP1/classesTest/jfree/chart/TESTING";
         ArrayList<File> listFiles = getListJavaFiles(folder);
 
