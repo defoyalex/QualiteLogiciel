@@ -12,8 +12,9 @@ public class ClasseMetriques extends Metriques {
     private float wmc; 
 	private ArrayList<MethodeMetriques> methodeMetriques;
 
-    public ClasseMetriques(String path, String classInString) {
+    public ClasseMetriques(String path, String classInString, int numberJavadocLines) {
 
+		this.cloc = numberJavadocLines;
         Pattern p = Pattern.compile("(\\w*).java");
         Matcher m = p.matcher(path);
         m.find();
@@ -24,7 +25,6 @@ public class ClasseMetriques extends Metriques {
 		this.dc = this.cloc/this.loc;
 		this.calculateWMC();
 		this.bc = this.dc/this.wmc;
-		
 
     }
 	
@@ -43,10 +43,13 @@ public class ClasseMetriques extends Metriques {
 
         ArrayList<MethodeMetriques> methodeMetriques = new ArrayList<MethodeMetriques>();
 
+        var metriques = new Metriques(); //utilisé pour compter les lignes de javadoc précédant déclaration de méthodes
+
         for (int i = 0; i < lines.length; i++) {
             String line = lines[i];
             String isComment = this.isComment(line);
 
+			metriques.javadocLineCounter(line);
 
 			if (this.isMethod(line)) {
 
@@ -68,10 +71,12 @@ public class ClasseMetriques extends Metriques {
 						numberOfBrackets++;
 					}
 					if (numberOfBrackets == 0) { //on sait qu'on a la dernière ligne de la méthode lorsque on arrive à zéro
-						//TODO juste etre sur que ca marche
 						methodToString = methodToString + "\n" + currentLine;
-						MethodeMetriques newMethod = new MethodeMetriques(this.chemin, this.className, methodToString);
+						int currentJavadocLinesNumber = metriques.getJavadocLineCounter();
+						metriques.resetJavadocLineCounter();
+						MethodeMetriques newMethod = new MethodeMetriques(this.chemin, this.className, methodToString, currentJavadocLinesNumber);
 						methodeMetriques.add(newMethod);
+
 						break;
 					} else {
 						i++;
@@ -91,8 +96,10 @@ public class ClasseMetriques extends Metriques {
 						if (isCodeAndComment(line)) {
 							this.loc++;
 						}
-
+						int indexBeforeCountChange = i; //on garde une copie de i avant qu'il change
 						i = countLineComment(lines, i);
+						int difference = i - indexBeforeCountChange - 1; //une fois qu'on a calculer le nombre de lignes de commentaires de javadoc
+						metriques.increaseJavadocLineCounter(difference); //on l'ajoute à notre compteur
 						break;
 					case "No comment":
 					    //Si la ligne est vide, on fait rien

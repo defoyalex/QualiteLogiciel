@@ -44,6 +44,7 @@ import java.awt.Paint;
  * extends the java.awt.Color object and extends the number of final
  * Colors publicly accessible.
  */
+
 public class ChartColor extends Color {
 
     /** A very dark red color. */

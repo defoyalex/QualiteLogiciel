@@ -12,6 +12,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -52,6 +59,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="830" y="257" key="#com.intellij.ide.util.MemberChooser" timestamp="1601770525681">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="830" y="257" key="#com.intellij.ide.util.MemberChooser/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601770525681" />
     <state x="705" y="292" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1601045656923">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
@@ -60,38 +71,55 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="784" y="426" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601045260303" />
-    <state width="2005" height="483" key="GridCell.Tab.0.bottom" timestamp="1601493446697">
+    <state width="2005" height="222" key="GridCell.Tab.0.bottom" timestamp="1601779190229">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="483" key="GridCell.Tab.0.bottom/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601493446697" />
-    <state width="2005" height="483" key="GridCell.Tab.0.center" timestamp="1601493446697">
+    <state width="2005" height="222" key="GridCell.Tab.0.bottom/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601779190229" />
+    <state width="2005" height="222" key="GridCell.Tab.0.center" timestamp="1601779190229">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="483" key="GridCell.Tab.0.center/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601493446697" />
-    <state width="2005" height="483" key="GridCell.Tab.0.left" timestamp="1601493446697">
+    <state width="2005" height="222" key="GridCell.Tab.0.center/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601779190229" />
+    <state width="2005" height="222" key="GridCell.Tab.0.left" timestamp="1601779190229">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="483" key="GridCell.Tab.0.left/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601493446697" />
-    <state width="2005" height="483" key="GridCell.Tab.0.right" timestamp="1601493446697">
+    <state width="2005" height="222" key="GridCell.Tab.0.left/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601779190229" />
+    <state width="2005" height="222" key="GridCell.Tab.0.right" timestamp="1601779190229">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="483" key="GridCell.Tab.0.right/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601493446697" />
-    <state width="2005" height="283" key="GridCell.Tab.1.bottom" timestamp="1601492741803">
+    <state width="2005" height="222" key="GridCell.Tab.0.right/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601779190229" />
+    <state width="2005" height="283" key="GridCell.Tab.1.bottom" timestamp="1601778682064">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="283" key="GridCell.Tab.1.bottom/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601492741803" />
-    <state width="2005" height="283" key="GridCell.Tab.1.center" timestamp="1601492741803">
+    <state width="2005" height="283" key="GridCell.Tab.1.bottom/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601778682064" />
+    <state width="2005" height="283" key="GridCell.Tab.1.center" timestamp="1601778682064">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="283" key="GridCell.Tab.1.center/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601492741803" />
-    <state width="2005" height="283" key="GridCell.Tab.1.left" timestamp="1601492741803">
+    <state width="2005" height="283" key="GridCell.Tab.1.center/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601778682064" />
+    <state width="2005" height="283" key="GridCell.Tab.1.left" timestamp="1601778682064">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="283" key="GridCell.Tab.1.left/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601492741803" />
-    <state width="2005" height="283" key="GridCell.Tab.1.right" timestamp="1601492741803">
+    <state width="2005" height="283" key="GridCell.Tab.1.left/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601778682064" />
+    <state width="2005" height="283" key="GridCell.Tab.1.right" timestamp="1601778682064">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="283" key="GridCell.Tab.1.right/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601492741803" />
+    <state width="2005" height="283" key="GridCell.Tab.1.right/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601778682064" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/TP1/ClasseMetriques.java</url>
+          <line>52</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="cloc" language="JAVA" />
+        <watch expression="javadocLineCounter" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/QualiteLogiciel$Main.ic" NAME="Main Coverage Results" MODIFIED="1601252074984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
