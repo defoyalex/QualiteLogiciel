@@ -72,22 +72,22 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="784" y="426" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601045260303" />
-    <state width="2005" height="184" key="GridCell.Tab.0.bottom" timestamp="1601851383781">
+    <state width="2005" height="216" key="GridCell.Tab.0.bottom" timestamp="1601856134545">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="184" key="GridCell.Tab.0.bottom/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601851383781" />
-    <state width="2005" height="184" key="GridCell.Tab.0.center" timestamp="1601851383781">
+    <state width="2005" height="216" key="GridCell.Tab.0.bottom/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601856134545" />
+    <state width="2005" height="216" key="GridCell.Tab.0.center" timestamp="1601856134545">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="184" key="GridCell.Tab.0.center/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601851383781" />
-    <state width="2005" height="184" key="GridCell.Tab.0.left" timestamp="1601851383781">
+    <state width="2005" height="216" key="GridCell.Tab.0.center/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601856134545" />
+    <state width="2005" height="216" key="GridCell.Tab.0.left" timestamp="1601856134544">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="184" key="GridCell.Tab.0.left/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601851383781" />
-    <state width="2005" height="184" key="GridCell.Tab.0.right" timestamp="1601851383781">
+    <state width="2005" height="216" key="GridCell.Tab.0.left/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601856134544" />
+    <state width="2005" height="216" key="GridCell.Tab.0.right" timestamp="1601856134545">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="184" key="GridCell.Tab.0.right/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601851383781" />
+    <state width="2005" height="216" key="GridCell.Tab.0.right/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601856134545" />
     <state width="2005" height="283" key="GridCell.Tab.1.bottom" timestamp="1601781166105">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
@@ -114,15 +114,6 @@
     <state x="687" y="243" width="672" height="678" key="search.everywhere.popup/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601850537683" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/TP1/ClasseMetriques.java</url>
-          <line>52</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="cloc" language="JAVA" />

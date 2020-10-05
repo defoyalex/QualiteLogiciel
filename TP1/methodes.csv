@@ -1,47 +1,57 @@
 chemin,class,methode,methode_LOC,methode_CLOC,methode_DC,methode_CC,methode_BC
-./,ClasseMetriques,ClasseMetriques_String_String,11,0,0.0,1,0.0
+E:\Documents\GitHub\QualiteLogiciel\TP1\,ClasseMetriques,ClasseMetriques_String_String_int,12,0,0.0,1,0.0
 
-./,ClasseMetriques,calculateWMC,7,0,0.0,2,0.0
+E:\Documents\GitHub\QualiteLogiciel\TP1\,ClasseMetriques,calculateWMC,7,0,0.0,2,0.0
 
-./,ClasseMetriques,countLines_String,56,8,0.14285714285714285,12,0.011904761904761904
+E:\Documents\GitHub\QualiteLogiciel\TP1\,ClasseMetriques,countLines_String,63,11,0.1746031746031746,12,0.01455026455026455
 
-./,ClasseMetriques,isMethod_String,19,2,0.10526315789473684,2,0.05263157894736842
+E:\Documents\GitHub\QualiteLogiciel\TP1\,ClasseMetriques,isMethod_String,19,2,0.10526315789473684,2,0.05263157894736842
 
-./,Main,getListJavaFiles_String,19,5,0.2631578947368421,6,0.043859649122807015
+E:\Documents\GitHub\QualiteLogiciel\TP1\,Main,getListJavaFiles_String,20,5,0.25,6,0.041666666666666664
 
-./,Main,readFiles_ArrayList<File>,29,4,0.13793103448275862,6,0.022988505747126436
+E:\Documents\GitHub\QualiteLogiciel\TP1\,Main,readFiles_ArrayList<File>,33,6,0.18181818181818182,6,0.030303030303030304
 
-./,Main,isClass_String,5,3,0.6,1,0.6
+E:\Documents\GitHub\QualiteLogiciel\TP1\,Main,isClass_String,5,3,0.6,1,0.6
 
-./,Main,writeCSV_ArrayList<ClasseMetriques>_String,18,0,0.0,2,0.0
+E:\Documents\GitHub\QualiteLogiciel\TP1\,Main,writeCSV_ArrayList<ClasseMetriques>_String,18,0,0.0,2,0.0
 
-./,Main,main_String[],8,2,0.25,1,0.25
+E:\Documents\GitHub\QualiteLogiciel\TP1\,Main,main_String[],8,3,0.375,1,0.375
 
-./,MethodeMetriques,MethodeMetriques_String_String_String,9,0,0.0,1,0.0
+E:\Documents\GitHub\QualiteLogiciel\TP1\,MethodeMetriques,MethodeMetriques_String_String_String_int,10,0,0.0,1,0.0
 
-./,MethodeMetriques,findMethodName_String[],19,9,0.47368421052631576,3,0.15789473684210525
+E:\Documents\GitHub\QualiteLogiciel\TP1\,MethodeMetriques,findMethodName_String[],19,9,0.47368421052631576,3,0.15789473684210525
 
-./,MethodeMetriques,getComplexity,3,0,0.0,1,0.0
+E:\Documents\GitHub\QualiteLogiciel\TP1\,MethodeMetriques,getComplexity,3,0,0.0,1,0.0
 
-./,MethodeMetriques,analyseLines_String[],56,9,0.16071428571428573,14,0.011479591836734694
+E:\Documents\GitHub\QualiteLogiciel\TP1\,MethodeMetriques,analyseLines_String[],56,9,0.16071428571428573,14,0.011479591836734694
 
-./,MethodeMetriques,containsCase_String,8,0,0.0,2,0.0
+E:\Documents\GitHub\QualiteLogiciel\TP1\,MethodeMetriques,containsCase_String,8,0,0.0,2,0.0
 
-./,MethodeMetriques,containsPredicate_String,21,1,0.047619047619047616,2,0.023809523809523808
+E:\Documents\GitHub\QualiteLogiciel\TP1\,MethodeMetriques,containsPredicate_String,21,1,0.047619047619047616,2,0.023809523809523808
 
-./,Metriques,isComment_String,11,0,0.0,3,0.0
+E:\Documents\GitHub\QualiteLogiciel\TP1\,Metriques,isComment_String,11,1,0.09090909090909091,3,0.030303030303030304
 
-./,Metriques,isSingleLineComment_String,8,1,0.125,2,0.0625
+E:\Documents\GitHub\QualiteLogiciel\TP1\,Metriques,isSingleLineComment_String,8,1,0.125,2,0.0625
 
-./,Metriques,isStartMultipleLineComment_String,8,1,0.125,2,0.0625
+E:\Documents\GitHub\QualiteLogiciel\TP1\,Metriques,isStartMultipleLineComment_String,8,1,0.125,2,0.0625
 
-./,Metriques,isEndMultipleLineComment_String,8,1,0.125,2,0.0625
+E:\Documents\GitHub\QualiteLogiciel\TP1\,Metriques,isEndMultipleLineComment_String,8,1,0.125,2,0.0625
 
-./,Metriques,isJavadocMultipleLineComment_String,8,1,0.125,2,0.0625
+E:\Documents\GitHub\QualiteLogiciel\TP1\,Metriques,isJavadocMultipleLineComment_String,8,1,0.125,2,0.0625
 
-./,Metriques,isCodeAndComment_String,9,2,0.2222222222222222,2,0.1111111111111111
+E:\Documents\GitHub\QualiteLogiciel\TP1\,Metriques,isCodeAndComment_String,9,2,0.2222222222222222,2,0.1111111111111111
 
-./,Metriques,countLineComment_String[]_int,11,1,0.09090909090909091,3,0.030303030303030304
+E:\Documents\GitHub\QualiteLogiciel\TP1\,Metriques,countLineComment_String[]_int,11,1,0.09090909090909091,3,0.030303030303030304
 
-./,Metriques,isEmptyLine_String,8,0,0.0,2,0.0
+E:\Documents\GitHub\QualiteLogiciel\TP1\,Metriques,isEmptyLine_String,8,0,0.0,2,0.0
+
+E:\Documents\GitHub\QualiteLogiciel\TP1\,Metriques,javadocLineCounter_String,15,11,0.7333333333333333,5,0.14666666666666667
+
+E:\Documents\GitHub\QualiteLogiciel\TP1\,Metriques,getJavadocLineCounter,3,0,0.0,1,0.0
+
+E:\Documents\GitHub\QualiteLogiciel\TP1\,Metriques,increaseJavadocLineCounter_int,3,0,0.0,1,0.0
+
+E:\Documents\GitHub\QualiteLogiciel\TP1\,Metriques,resetJavadocLineCounter,3,0,0.0,1,0.0
+
+E:\Documents\GitHub\QualiteLogiciel\TP1\,Metriques,isImportLines_String,5,0,0.0,1,0.0
 
