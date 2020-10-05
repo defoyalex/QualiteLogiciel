@@ -27,7 +27,7 @@ public class Main {
                 ArrayList<File> newJavaFiles = getListJavaFiles(path + file.getName() + "/");
                 if (newJavaFiles != null) {
                     newJavaFiles.addAll(allJavaFiles);
-                    //allJavaFiles = newJavaFiles; //DÉCOMMENTER SI ON VEUT PASSER TOUS LES DOSSIERS RÉCURSIVEMENT
+                    allJavaFiles = newJavaFiles; //DÉCOMMENTER SI ON VEUT PASSER TOUS LES DOSSIERS RÉCURSIVEMENT
                 }
             }
         }
@@ -120,9 +120,13 @@ public class Main {
 
     public static void main(String[] args) {
         //String folder = "./classesTest/jfree/chart";
-        String folder = "E:/Documents/GitHub/QualiteLogiciel/TP1/";
+        //String folder = "E:/Documents/GitHub/QualiteLogiciel/TP1/";
         //String folder = "E:/Documents/GitHub/QualiteLogiciel/TP1/classesTest/jfree/";
-        //String folder = "E:/Documents/GitHub/QualiteLogiciel/TP1/classesTest/jfree/chart/TESTING";
+
+        var scan = new Scanner(System.in);
+        System.out.println("Veuillez entrer le chemin du dossier ou fichier à analyser.");
+        String folder = scan.nextLine();
+
         ArrayList<File> listFiles = getListJavaFiles(folder);
 
         ArrayList<ClasseMetriques> classeMetriques = readFiles(listFiles);

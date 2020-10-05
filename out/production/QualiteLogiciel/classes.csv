@@ -1,9 +1,0 @@
-chemin,class,classe_LOC,classe_CLOC,classe_DC,classe_WMC,classe_BC
-./,ClasseMetriques,3,4,1.0,4.25,0.23529411764705882
-
-./,Main,4,4,1.0,3.2,0.3124999953433872
-
-./,MethodeMetriques,3,4,1.0,3.8333333,0.2608695706257524
-
-./,Metriques,8,14,1.0,2.25,0.4444444444444444
-
