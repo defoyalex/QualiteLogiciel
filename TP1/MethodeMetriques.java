@@ -48,20 +48,26 @@ public class MethodeMetriques extends Metriques {
         Matcher m = p.matcher(nomMethod); //line[0] est une string vide
         m.find();
 		//Remplace les parenthèses par des espaces
-		System.out.println(nomMethod);
         String methodName = m.group().replace("(", ",");
 		methodName = methodName.replace(")", ",");
 	
-			System.out.println(this.chemin + this.methodName);
 		
 		//Sépare tous les mots par les espaces
 		String[] methodArray = methodName.split(",");
+		
 
 		//Le premier mot du tableau est le nom de la méthode
 		//Chaque index impair suivant est le type d'un attribut
 		methodName = methodArray[0];
-		for(int i=1; i<methodArray.length; i=i+2){
-			methodName += "_" + methodArray[i].split(" ")[0];
+
+		for(int i=0; i<methodArray.length; i++){
+			String[] attributes = methodArray[i].split(" ");
+			if(attributes[0].isEmpty()){
+				methodName += "_" + attributes[1];
+			} else{
+				methodName += "_" + attributes[0];
+			}
+			;
 		}
 
 		return methodName;

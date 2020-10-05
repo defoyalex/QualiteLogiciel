@@ -27,7 +27,7 @@ public class Main {
                 ArrayList<File> newJavaFiles = getListJavaFiles(path + file.getName() + "/");
                 if (newJavaFiles != null) {
                     newJavaFiles.addAll(allJavaFiles);
-                    //allJavaFiles = newJavaFiles; //DÉCOMMENTER SI ON VEUT PASSER TOUS LES DOSSIERS RÉCURSIVEMENT
+                    allJavaFiles = newJavaFiles; //DÉCOMMENTER SI ON VEUT PASSER TOUS LES DOSSIERS RÉCURSIVEMENT
 
                 }
             }

@@ -90,12 +90,14 @@ public class ClasseMetriques extends Metriques {
 					case "Single line":
 						if (isCodeAndComment(line)) {
 							this.loc++;
+							//System.out.println(line);
 						}
 						cloc++;
 						break;
 					case "Multiple line":
 						if (isCodeAndComment(line)) {
 							this.loc++;
+							//System.out.println(line);
 						}
 						int indexBeforeCountChange = i; //on garde une copie de i avant qu'il change
 						i = countLineComment(lines, i);
@@ -106,6 +108,7 @@ public class ClasseMetriques extends Metriques {
 					    //Si la ligne est vide, on fait rien
 						if (!isEmptyLine(line)) {
 							this.loc++;
+							//System.out.println(line);
 						}
 						break;
 				}
