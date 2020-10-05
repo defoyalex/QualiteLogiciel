@@ -1,11 +1,13 @@
 1)tests unitaires
 
-2)partie 5 :
+2)mettre un input dans lequel l'utilisateur peut donner le chemin du dossier/fichier à analyser.
+
+3)partie 5 :
 Appliquez votre outil au code du https://github.com/jfree/jfreechart
 Identifiez les 3 classes et les 3 méthodes les moins bien commentées et proposez des améliorations.
 Décrivez votre solution dans un fichier de texte brut (TXT).
 
-3)produire un fichier JAR exécutable
+4)produire un fichier JAR exécutable
 
-4)produire documentation (surement un "ReadMe.txt") sur comment utiliser notre programme
+5)produire documentation (surement un "ReadMe.txt") sur comment utiliser notre programme
 

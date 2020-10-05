@@ -32,6 +32,7 @@
     <property name="last.edited.regexp" value="}" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -71,22 +72,22 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="784" y="426" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601045260303" />
-    <state width="2005" height="283" key="GridCell.Tab.0.bottom" timestamp="1601781166105">
+    <state width="2005" height="184" key="GridCell.Tab.0.bottom" timestamp="1601851383781">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="283" key="GridCell.Tab.0.bottom/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601781166105" />
-    <state width="2005" height="283" key="GridCell.Tab.0.center" timestamp="1601781166104">
+    <state width="2005" height="184" key="GridCell.Tab.0.bottom/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601851383781" />
+    <state width="2005" height="184" key="GridCell.Tab.0.center" timestamp="1601851383781">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="283" key="GridCell.Tab.0.center/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601781166104" />
-    <state width="2005" height="283" key="GridCell.Tab.0.left" timestamp="1601781166104">
+    <state width="2005" height="184" key="GridCell.Tab.0.center/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601851383781" />
+    <state width="2005" height="184" key="GridCell.Tab.0.left" timestamp="1601851383781">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="283" key="GridCell.Tab.0.left/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601781166104" />
-    <state width="2005" height="283" key="GridCell.Tab.0.right" timestamp="1601781166105">
+    <state width="2005" height="184" key="GridCell.Tab.0.left/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601851383781" />
+    <state width="2005" height="184" key="GridCell.Tab.0.right" timestamp="1601851383781">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="283" key="GridCell.Tab.0.right/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601781166105" />
+    <state width="2005" height="184" key="GridCell.Tab.0.right/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601851383781" />
     <state width="2005" height="283" key="GridCell.Tab.1.bottom" timestamp="1601781166105">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
@@ -103,6 +104,14 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state width="2005" height="283" key="GridCell.Tab.1.right/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601781166105" />
+    <state x="533" y="201" key="SettingsEditor" timestamp="1601850656119">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="533" y="201" key="SettingsEditor/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601850656119" />
+    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup" timestamp="1601850537683">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601850537683" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -143,4 +143,10 @@ public class Metriques {
         javadocLineCounter = 0;
     }
 
+    public boolean isImportLines(String line) {
+        Pattern importLinePattern = Pattern.compile("(^import)");
+        Matcher importLine = importLinePattern.matcher(line);
+
+        return importLine.find();
+    }
 }
