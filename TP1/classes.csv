@@ -1,9 +1,9 @@
 chemin,class,classe_LOC,classe_CLOC,classe_DC,classe_WMC,classe_BC
-E:\Documents\GitHub\QualiteLogiciel\TP1\,ClasseMetriques,3,4,1.0,4.25,0.23529411764705882
+./,ClasseMetriques,3,4,1.0,4.25,0.23529411764705882
 
-E:\Documents\GitHub\QualiteLogiciel\TP1\,Main,4,4,1.0,3.2,0.3124999953433872
+./,Main,4,4,1.0,3.2,0.3124999953433872
 
-E:\Documents\GitHub\QualiteLogiciel\TP1\,MethodeMetriques,3,4,1.0,3.8333333,0.2608695706257524
+./,MethodeMetriques,3,4,1.0,3.8333333,0.2608695706257524
 
-E:\Documents\GitHub\QualiteLogiciel\TP1\,Metriques,10,14,1.0,2.0769231,0.48148146872657843
+./,Metriques,10,14,1.0,2.1666667,0.4615384446093323
 

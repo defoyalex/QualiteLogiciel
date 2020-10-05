@@ -125,9 +125,7 @@ public class Main {
         //String folder = "E:/Documents/GitHub/QualiteLogiciel/TP1/classesTest/jfree/chart/TESTING";
         ArrayList<File> listFiles = getListJavaFiles(folder);
 
-        System.out.println("taille de listFiles = " + listFiles.size());
         ArrayList<ClasseMetriques> classeMetriques = readFiles(listFiles);
-        System.out.println("taille de classeMetriques = " + classeMetriques.size());
 
         writeCSV(classeMetriques, folder);
     }
