@@ -28,7 +28,6 @@ public class Main {
                 if (newJavaFiles != null) {
                     newJavaFiles.addAll(allJavaFiles);
                     allJavaFiles = newJavaFiles; //DÉCOMMENTER SI ON VEUT PASSER TOUS LES DOSSIERS RÉCURSIVEMENT
-
                 }
             }
         }
@@ -39,7 +38,7 @@ public class Main {
     // Lis une liste de fichiers 0
     public static ArrayList<ClasseMetriques> readFiles(ArrayList<File> files) {
         ArrayList<ClasseMetriques> classeMetriques = new ArrayList<ClasseMetriques>();
-
+        int importLineCounter = 0;
         var metriques = new Metriques(); //utilisé pour compter les lignes de javadoc précédant déclaration de classes
 
         for (int i = 0; i < files.size(); i++) {
@@ -52,6 +51,10 @@ public class Main {
                     String line = reader.nextLine();
 
                     metriques.javadocLineCounter(line);
+
+                    if (metriques.isImportLines(line)) { //si c'est une déclaration de "import ..."
+                        importLineCounter++;
+                    }
 
                     if (isClass(line)) {
                         //TODO si la ligne est le début d'une classe
@@ -67,7 +70,7 @@ public class Main {
                         }
                         int currentJavadocLinesNumber = metriques.getJavadocLineCounter();
                         metriques.resetJavadocLineCounter(); //on réinitialise le compteur de ligne de javadoc
-                        ClasseMetriques nouvelleClasse = new ClasseMetriques(files.get(i).toString(), line, currentJavadocLinesNumber);
+                        ClasseMetriques nouvelleClasse = new ClasseMetriques(files.get(i).toString(), line, currentJavadocLinesNumber + importLineCounter);
                         classeMetriques.add(nouvelleClasse);
                     }
                 }
@@ -117,11 +120,13 @@ public class Main {
 
     public static void main(String[] args) {
         //String folder = "./classesTest/jfree/chart";
-        String folder = "./";
-        //String folder = "E:/Documents/GitHub/QualiteLogiciel/TP1/classesTest/jfree/chart";
-        //String folder = "./";
+        //String folder = "E:/Documents/GitHub/QualiteLogiciel/TP1/";
         //String folder = "E:/Documents/GitHub/QualiteLogiciel/TP1/classesTest/jfree/";
-        //String folder = "E:/Documents/GitHub/QualiteLogiciel/TP1/classesTest/jfree/chart/TESTING";
+
+        var scan = new Scanner(System.in);
+        System.out.println("Veuillez entrer le chemin du dossier ou fichier à analyser.");
+        String folder = scan.nextLine();
+
         ArrayList<File> listFiles = getListJavaFiles(folder);
 
         ArrayList<ClasseMetriques> classeMetriques = readFiles(listFiles);

@@ -14,6 +14,7 @@ public class MethodeMetriques extends Metriques {
         this.chemin = chemin;
         this.className = className;
 		this.cloc = javadocLineCounter;
+		this.loc = javadocLineCounter;
 
 		String lines[] = methodInString.split("\\r?\\n");
 
