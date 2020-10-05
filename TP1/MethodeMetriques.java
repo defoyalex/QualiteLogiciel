@@ -44,21 +44,24 @@ public class MethodeMetriques extends Metriques {
 
 
 		//Trouver le pattern qui correspond au nom de méthode
-        Pattern p = Pattern.compile("(\\w*)(\\s)?(\\u0028)[\\w\\s\\[\\]\\<\\>,]*(\\u0029)");
+        Pattern p = Pattern.compile("(\\w*)(\\s)?(\\u0028)[\\w\\s\\[\\]\\<\\>\\?,\\.]*(\\u0029)");
         Matcher m = p.matcher(nomMethod); //line[0] est une string vide
         m.find();
 		//Remplace les parenthèses par des espaces
-        String methodName = m.group().replace("(", " ");
-		methodName = methodName.replace(")", " ");
-
+		System.out.println(nomMethod);
+        String methodName = m.group().replace("(", ",");
+		methodName = methodName.replace(")", ",");
+	
+			System.out.println(this.chemin + this.methodName);
+		
 		//Sépare tous les mots par les espaces
-		String[] methodArray = methodName.split(" ");
+		String[] methodArray = methodName.split(",");
 
 		//Le premier mot du tableau est le nom de la méthode
 		//Chaque index impair suivant est le type d'un attribut
 		methodName = methodArray[0];
 		for(int i=1; i<methodArray.length; i=i+2){
-			methodName += "_" + methodArray[i];
+			methodName += "_" + methodArray[i].split(" ")[0];
 		}
 
 		return methodName;
@@ -130,8 +133,6 @@ public class MethodeMetriques extends Metriques {
 			countPredicate++;
 		}
 		this.cc = countPredicate;
-        System.out.println("Ligne de code : " + loc + " Ligne de commentaire :" + cloc + " dans la methode \"" + this.methodName + "\" à l'intérieur de la classe \"" + this.className + "\"");
-		System.out.println("Complexité cyclomatique :" + this.cc);
     }
 
 	//Vérifie si la ligne contient un case ou un default (prédicat switch)

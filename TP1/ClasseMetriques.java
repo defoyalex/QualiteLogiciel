@@ -21,6 +21,7 @@ public class ClasseMetriques extends Metriques {
         this.className = m.group().replace(".java", "");
         this.chemin = path.replace(m.group(), "");
         countLines(classInString);
+
 		
 		this.dc = this.cloc/this.loc;
 		this.calculateWMC();
@@ -112,7 +113,6 @@ public class ClasseMetriques extends Metriques {
      			
         }
 		this.methodeMetriques = methodeMetriques;
-        System.out.println("Ligne de code : " + loc + " Ligne de commentaire :" + cloc + " dans la classe " + this.className);
     }
 
     public boolean isMethod(String line) {
