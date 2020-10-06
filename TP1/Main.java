@@ -39,10 +39,10 @@ public class Main {
     public static ArrayList<ClasseMetriques> readFiles(ArrayList<File> files) {
         ArrayList<ClasseMetriques> classeMetriques = new ArrayList<ClasseMetriques>();
         int importLineCounter = 0;
-        var metriques = new Metriques(); //utilisé pour compter les lignes de javadoc précédant déclaration de classes
 
         for (int i = 0; i < files.size(); i++) {
             File file = files.get(i);
+			System.out.println(file);
 
             try {
                 Scanner reader = new Scanner(file);
@@ -50,28 +50,15 @@ public class Main {
                 while (reader.hasNextLine()) {
                     String line = reader.nextLine();
 
-                    metriques.javadocLineCounter(line);
 
-                    if (metriques.isImportLines(line)) { //si c'est une déclaration de "import ..."
+                    if (isImportLines(line)) { //si c'est une déclaration de "import ..."
                         importLineCounter++;
                     }
 
-                    if (isClass(line)) {
-                        //TODO si la ligne est le début d'une classe
-                        while (true) {
-                            String nextLine = reader.nextLine();
-                            Pattern p = Pattern.compile("(^})"); //on regarde pour une braquette en début de ligne signifiant la fin de la classe
-                            Matcher m = p.matcher(nextLine);
-                            if (m.find()) { //lorsqu'on trouve la fin de la classe, on concatène une dernière ligne puis on break du loop
-                                line = line + "\n" + nextLine;
-                                break;
-                            }
-                            line = line + "\n" + nextLine; //si on trouve pas la fin de la classe, on concatène chaque ligne avec la précédente
-                        }
-                        int currentJavadocLinesNumber = metriques.getJavadocLineCounter();
-                        metriques.resetJavadocLineCounter(); //on réinitialise le compteur de ligne de javadoc
-                        ClasseMetriques nouvelleClasse = new ClasseMetriques(files.get(i).toString(), line, currentJavadocLinesNumber + importLineCounter);
-                        classeMetriques.add(nouvelleClasse);
+                    if (isClassOrJavadoc(line)) {
+                        line = findEndClass(reader, line);
+						ClasseMetriques nouvelleClasse = new ClasseMetriques(files.get(i).toString(), line, importLineCounter);
+						classeMetriques.add(nouvelleClasse);
                     }
                 }
                 reader.close();
@@ -83,13 +70,60 @@ public class Main {
         return classeMetriques;
 
     }
+	
+	//Renvoie la classe en String
+	public static String findEndClass(Scanner reader, String classToString){
+		int numberOfBrackets = 0;
+		boolean firstBracketFound = false;
+		String currentLine = classToString;
+		String totalString = "";
+		
+		
+		Pattern patternOpeningBracket = Pattern.compile("(\\u007b)"); //on regarde pour une braquette ouvrante
+		Pattern patternClosingBracket = Pattern.compile("(\\u007d)"); //on regarde pour une braquette fermante
+		
+		 
+		 
+		Pattern patternClass = Pattern.compile("(^public)(\\s)((final(\\s)class)|(abstract(\\s)class)|enum|interface|class)(\\s)");
+
+		while(!patternClass.matcher(currentLine).find()){
+			System.out.println(currentLine);
+			totalString += currentLine + "\n";
+			currentLine = reader.nextLine();
+			}
+			
+
+		
+		while(true) {
+			
+			Matcher OpeningBracket = patternOpeningBracket.matcher(currentLine);
+			Matcher ClosingBracket = patternClosingBracket.matcher(currentLine);
+
+			if (ClosingBracket.find()) { //on décrémente par le nombre de braquette fermante sur la ligne
+				numberOfBrackets--;
+			}
+			if (OpeningBracket.find()) { //on incrémente par le nombre de braquette fermante sur la ligne
+				numberOfBrackets++;
+				firstBracketFound = true;
+			}
+			if (numberOfBrackets == 0 && firstBracketFound) { //on sait qu'on a la dernière ligne de la méthode lorsque on arrive à zéro
+			System.out.println(totalString + currentLine);
+				return totalString + currentLine;
+			} else {
+				totalString += currentLine + "\n";
+			}
+			currentLine = reader.nextLine();
+		}
+	}
 
     // Pour vérifier si la ligne est le début d'une classe
-    public static boolean isClass(String line) {
+    public static boolean isClassOrJavadoc(String line) {
         //On vérifie si ça on trouve un pattern signifiant une classe
         Pattern pattern = Pattern.compile("(^public)(\\s)((final(\\s)class)|(abstract(\\s)class)|enum|interface|class)(\\s)"); //notre pattern recherché est "public" situé en début de ligne + les différents types de classes possibles
-        boolean ifItFinds = pattern.matcher(line).find(); //s'il trouve notre pattern à l'intérieur de la ligne de code
-        return ifItFinds;
+        Pattern javadoc = Pattern.compile("/\\*\\*"); //pour "**"
+		
+		return ( pattern.matcher(line).find() || javadoc.matcher(line).find() ); //s'il trouve notre pattern à l'intérieur de la ligne de code
+
     }
 
     public static void writeCSV(ArrayList<ClasseMetriques> arrayMetriques, String folder) {
@@ -117,6 +151,13 @@ public class Main {
         }
 
     }
+	
+	public static boolean isImportLines(String line) {
+        Pattern importLinePattern = Pattern.compile("(^import)");
+        Matcher importLine = importLinePattern.matcher(line);
+
+        return importLine.find();
+    }
 
     public static void main(String[] args) {
         //String folder = "./classesTest/jfree/chart";
@@ -131,6 +172,6 @@ public class Main {
 
         ArrayList<ClasseMetriques> classeMetriques = readFiles(listFiles);
 
-        writeCSV(classeMetriques, folder);
+        writeCSV(classeMetriques, "./");
     }
 }	

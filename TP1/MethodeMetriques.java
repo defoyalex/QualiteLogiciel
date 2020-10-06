@@ -9,12 +9,15 @@ public class MethodeMetriques extends Metriques {
     private String methodName;
     private int cc; //Complexité cyclomatique
 
-    public MethodeMetriques(String chemin, String className, String methodInString, int javadocLineCounter) {
+    public MethodeMetriques(String chemin, String className, String methodInString, int javadocCount) {
+		System.out.println(javadocCount);
+		System.out.println("MEETHOOODE"+ " in " + className +methodInString);
 
         this.chemin = chemin;
         this.className = className;
-		this.cloc = javadocLineCounter;
-		this.loc = javadocLineCounter;
+		this.loc = javadocCount;
+		this.cloc = javadocCount;
+
 
 		String lines[] = methodInString.split("\\r?\\n");
 
@@ -42,6 +45,7 @@ public class MethodeMetriques extends Metriques {
 			j++;
 
 		}
+		System.out.println("Méthode" + nomMethod);
 
 
 		//Trouver le pattern qui correspond au nom de méthode
@@ -56,19 +60,23 @@ public class MethodeMetriques extends Metriques {
 		//Sépare tous les mots par les espaces
 		String[] methodArray = methodName.split(",");
 		
+		for(int i=0; i<methodArray.length; i++){
+			System.out.println(i + methodArray[i]);
+		}
+		
 
 		//Le premier mot du tableau est le nom de la méthode
 		//Chaque index impair suivant est le type d'un attribut
 		methodName = methodArray[0];
 
-		for(int i=0; i<methodArray.length; i++){
+		for(int i=1; i<methodArray.length; i++){
 			String[] attributes = methodArray[i].split(" ");
-			if(attributes[0].isEmpty()){
-				methodName += "_" + attributes[1];
-			} else{
-				methodName += "_" + attributes[0];
+			for(int k=0; k<attributes.length; k++){
+				if(!isEmptyLine(attributes[k])){
+					methodName += "_" + attributes[k];
+					k=attributes.length;
+				}
 			}
-			;
 		}
 
 		return methodName;
@@ -77,12 +85,20 @@ public class MethodeMetriques extends Metriques {
 	public int getComplexity(){
 		return this.cc;
 	}
+	
+	public int getLOC(){
+		return this.loc;
+	}
+	
+	public int getCLOC(){
+		return this.cloc;
+	}
 
     private void analyseLines(String[] lines) {
 		//Pour calculer la complexité cyclomatique
 		//Égal au nombre de (for, if, while, etc.) + 1
 		boolean atLeastOneCase = false;
-		int countPredicate = 0;
+		int countPredicate = 1;
 
         for (int i = 1; i < lines.length; i++) { //on commence à i=1 puisque i=0 est une string vide
             String line = lines[i];
@@ -94,38 +110,30 @@ public class MethodeMetriques extends Metriques {
 						//Sépare le commentaire de la ligne de code
 						String[] code = line.split("//");
 						//On ajoute +1 au compte s'il y a un prédicat ou un case
-						if(containsCase(code[0])){
-							atLeastOneCase = true;
-							countPredicate++;
-						}
 						if(containsPredicate(code[0])){
 							countPredicate++;
 						}
-                        this.loc++;
                     }
-                    cloc++;
+                    this.cloc++;
+					this.loc++;
                     break;
                 case "Multiple line":
                     if (isCodeAndComment(line)) {
-                        String[] code = line.split("//");
-						if(containsCase(code[0])){
-							atLeastOneCase = true;
-							countPredicate++;
-						}
+                        String[] code = line.split("/*"); //*/
 						if(containsPredicate(code[0])){
 							countPredicate++;
 						}
-                        this.loc++;
                     }
+					
                     i = countLineComment(lines, i);
                     break;
+				case "Javadoc":
+					i = countLineComment(lines, i);
+					break;
                 case "No comment":
-					//Si la ligne est vide, on fait rien
+					//Si la ligne n'est pas vide, on vérifie s'il y a un prédicat
+					//Sinon on fait rien
                     if(!isEmptyLine(line)){
-						if(containsCase(line)){
-							atLeastOneCase = true;
-							countPredicate++;
-						}
 						if(containsPredicate(line)){
 							countPredicate++;
 						}
@@ -135,28 +143,15 @@ public class MethodeMetriques extends Metriques {
             }
         }
 
-		//S'il y a au moins un case, on ajoute pas +1 au compte de prédicat
-		if(!atLeastOneCase){
-			countPredicate++;
-		}
+
 		this.cc = countPredicate;
     }
 
-	//Vérifie si la ligne contient un case ou un default (prédicat switch)
-	public boolean containsCase(String line){
-		Pattern casePattern = Pattern.compile("\\s(case|default)[:\\s]");
-		Matcher caseMatcher = casePattern.matcher(line);
-
-		if (caseMatcher.find()){
-			return true;
-		}
-		return false;
-	}
 
 	//Vérifie si la ligne contient un prédicat if, while, for, etc.
 	public boolean containsPredicate(String line){
 		//u0028 = "(", u007b = "{"
-		Pattern predicate = Pattern.compile("\\s(if|for|while)[\\u0028\\s\\u007b]");
+		Pattern predicate = Pattern.compile("\\s(if|for|while|case|default)[:\\u0028\\s\\u007b]");
 		Matcher predicateMatcher = predicate.matcher(line);
 
 		if (predicateMatcher.find()){

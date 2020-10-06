@@ -1,11 +1,11 @@
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Metriques {
+public abstract class Metriques {
     protected String chemin;
     protected String className;
-    protected int loc; //Nombre de ligne de code
-    protected int cloc; // Nombre de ligne de commentaire
+    protected int loc = 0; //Nombre de ligne de code
+    protected int cloc = 0; // Nombre de ligne de commentaire
     protected double dc; //Densité de commentaire CLOC/LOC
 
     private boolean doWeCount = false;
@@ -21,12 +21,16 @@ public class Metriques {
         if (isSingleLineComment(line)) {
             return "Single line";
         }
+		
+		if (isJavadocMultipleLineComment(line)){
+            return "Javadoc";
+        }
 
         if (isStartMultipleLineComment(line) ||
-                isEndMultipleLineComment(line) ||
-                isJavadocMultipleLineComment(line)) {
+                isEndMultipleLineComment(line) ) {
             return "Multiple line";
         }
+		
         return "No comment";
     }
 
@@ -62,16 +66,15 @@ public class Metriques {
 
     //Vérifie si la ligne contient la suite d'un commentaire JavaDoc
     public boolean isJavadocMultipleLineComment(String line) {
-        Pattern javadoc = Pattern.compile("\\*\\*"); //pour "**"
+        Pattern javadoc = Pattern.compile("\\*\\*"); //pour "/**"
         Matcher javadocMatcher = javadoc.matcher(line);
         if (javadocMatcher.find()) {
             return true;
         }
         return false;
     }
-
-
-    //Vérifie s'il y a une ligne de code avant un commentaire
+	
+	//Vérifie s'il y a une ligne de code avant un commentaire
     public boolean isCodeAndComment(String line) {
         Pattern singleLine = Pattern.compile("\\S+\\s*//");
         Matcher singleLineMatcher = singleLine.matcher(line);
@@ -87,9 +90,9 @@ public class Metriques {
     /*Compte la quantité de lignes de commentaires et renvoie la nouvelle position
     dans le tableau de lignes de code après les commentaires.*/
     public int countLineComment(String[] lines, int i) {
-
         while (!isEndMultipleLineComment(lines[i])) {
             this.cloc++;
+			this.loc++;
             //Si on atteint la fin tu tableau sans trouver la fin du commentaire
             if (i == lines.length) {
 
@@ -98,6 +101,7 @@ public class Metriques {
             i++;
         }
         this.cloc++;
+		this.loc++;
         return i;
     }
 
@@ -132,21 +136,6 @@ public class Metriques {
         }
     }
 
-    public int getJavadocLineCounter() {
-        return javadocLineCounter;
-    }
 
-    public void increaseJavadocLineCounter(int amount) {
-        javadocLineCounter = javadocLineCounter + amount;
-    }
-    public void resetJavadocLineCounter() {
-        javadocLineCounter = 0;
-    }
 
-    public boolean isImportLines(String line) {
-        Pattern importLinePattern = Pattern.compile("(^import)");
-        Matcher importLine = importLinePattern.matcher(line);
-
-        return importLine.find();
-    }
 }
