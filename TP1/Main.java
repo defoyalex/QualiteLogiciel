@@ -87,7 +87,7 @@ public class Main {
         Pattern patternOpeningBracket = Pattern.compile("(\\u007b)"); //on regarde pour une braquette ouvrante
         Pattern patternClosingBracket = Pattern.compile("(\\u007d)"); //on regarde pour une braquette fermante
 
-        Pattern patternClass = Pattern.compile("(^public)(\\s)((final(\\s)class)|(abstract(\\s)class)|enum|interface|class)(\\s)");
+        Pattern patternClass = Pattern.compile("((^public\\s+)((final|abstract)\\s+)?(enum|interface|class)(\\s))|(^class\\s)");
 
         while (!patternClass.matcher(currentLine).find() && reader.hasNextLine()) {
             System.out.println(currentLine);
@@ -122,11 +122,10 @@ public class Main {
     // Pour vérifier si la ligne est le début d'une classe
     public static boolean isClassOrJavadoc(String line) {
         //On vérifie si ça on trouve un pattern signifiant une classe
-        Pattern pattern = Pattern.compile("(^public)(\\s)((final(\\s)class)|(abstract(\\s)class)|enum|interface|class)(\\s)"); //notre pattern recherché est "public" situé en début de ligne + les différents types de classes possibles
+        Pattern pattern = Pattern.compile("((^public\\s)((final|abstract)\\s)?(enum|interface|class)(\\s))|(^class\\s)"); //notre pattern recherché est "public" situé en début de ligne + les différents types de classes possibles
         Pattern javadoc = Pattern.compile("/\\*\\*"); //pour "**"
 
         return (pattern.matcher(line).find() || javadoc.matcher(line).find()); //s'il trouve notre pattern à l'intérieur de la ligne de code
-
     }
 
     public static void writeCSV(ArrayList<ClasseMetriques> arrayMetriques, String folder) {

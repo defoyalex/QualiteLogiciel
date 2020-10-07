@@ -148,10 +148,22 @@ public class ClasseMetriques extends Metriques {
 
     public boolean isMethod(String[] lines, int i) {
         Pattern patternStart = Pattern.compile("(public|private|protected)(\\s)+(\\w*\\s)?(\\S*\\s)?[\\w]*\\s?(\\u0028)(.*)");
-		//Pattern patternTotal = Pattern.compile("(public|private|protected)(\\s)+(\\w*\\s)?[\\w]*(\\u0028)(.*)(\\u0029)(\\s)*(\\u007b)");
+		Pattern patternTotal = Pattern.compile("(public|private|protected)(\\s)+(\\w*\\s)?[\\w]*(\\u0028)[\\w\\s\\[\\]\\<\\>\\?,\\.]*(\\u0029)(\\s)*(\\u007b)");
         //u0028 = "(", u0029 = ")" et u007b = "{"
+		Pattern patternCodeLine = Pattern.compile(";");
+		String methodStart = lines[i];
+		
+		if(patternStart.matcher(lines[i]).find()){
+			while(i<lines.length && !patternCodeLine.matcher(lines[i]).find()){
+				if(patternStart.matcher(methodStart).find()){
+					return true;
+				}
+				i++;
+				methodStart += lines[i];
+			}
+		}
 
-        return patternStart.matcher(lines[i]).find(); //s'il trouve notre pattern à l'intérieur de la ligne de code
+        return false; //s'il trouve notre pattern à l'intérieur de la ligne de code
     }
 	
 	public void writeCSV(String pathClass, String pathMethod){
