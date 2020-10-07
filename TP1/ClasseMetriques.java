@@ -37,7 +37,7 @@ public class ClasseMetriques extends Metriques {
 		for(MethodeMetriques methodeMetrique: this.methodeMetriquesList){
 			sommePondérée+=methodeMetrique.getComplexity();
 		}
-		this.wmc = sommePondérée/this.methodeMetriquesList.size();
+		this.wmc = sommePondérée;
 	}
 	
 	public void addMethodLines(){
