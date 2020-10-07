@@ -74,10 +74,7 @@ public class ClasseMetriques extends Metriques {
 			
 			
             String isComment = this.isComment(line);
-			
-			
-			
-			
+
 			if (this.isMethod(lines, i)) {
 				boolean firstBracketFound = false;
 
@@ -87,7 +84,7 @@ public class ClasseMetriques extends Metriques {
 				Pattern patternOpeningBracket = Pattern.compile("(\\u007b)"); //on regarde pour une braquette ouvrante
 				Pattern patternClosingBracket = Pattern.compile("(\\u007d)"); //on regarde pour une braquette fermante
 
-				while (true) {
+				while (i < lines.length) {
 					String currentLine = lines[i];
 
 					

@@ -97,7 +97,6 @@ public class MethodeMetriques extends Metriques {
     private void analyseLines(String[] lines) {
 		//Pour calculer la complexité cyclomatique
 		//Égal au nombre de (for, if, while, etc.) + 1
-		boolean atLeastOneCase = false;
 		int countPredicate = 1;
 
         for (int i = 1; i < lines.length; i++) { //on commence à i=1 puisque i=0 est une string vide
@@ -142,8 +141,6 @@ public class MethodeMetriques extends Metriques {
                     break;
             }
         }
-
-
 		this.cc = countPredicate;
     }
 

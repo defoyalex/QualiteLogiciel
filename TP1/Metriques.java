@@ -30,7 +30,6 @@ public abstract class Metriques {
                 isEndMultipleLineComment(line) ) {
             return "Multiple line";
         }
-		
         return "No comment";
     }
 
@@ -90,7 +89,7 @@ public abstract class Metriques {
     /*Compte la quantité de lignes de commentaires et renvoie la nouvelle position
     dans le tableau de lignes de code après les commentaires.*/
     public int countLineComment(String[] lines, int i) {
-        while (!isEndMultipleLineComment(lines[i])) {
+        while (i < lines.length && !isEndMultipleLineComment(lines[i])) {
             this.cloc++;
 			this.loc++;
             //Si on atteint la fin tu tableau sans trouver la fin du commentaire
