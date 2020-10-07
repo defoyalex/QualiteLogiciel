@@ -9,15 +9,15 @@ public class Main {
     d'un répertoire */
     public static ArrayList<File> getListJavaFiles(String path) {
         File directory = new File(path);
+        File[] files = directory.listFiles();
+        ArrayList<File> allJavaFiles = new ArrayList<File>(); //Fait un ArrayList de tous les fichiers dans le dossier
 
         if (!directory.isDirectory()) {  //si c'est pas un dossier et plutôt un fichier
-            return null;
+            if (directory.getName().endsWith(".java")) {
+                allJavaFiles.add(directory);
+                return allJavaFiles;
+            }
         }
-
-        //Fais un ArrayList de tous les fichiers dans le dossier
-        File[] files = directory.listFiles();
-        ArrayList<File> allJavaFiles = new ArrayList<File>();
-
         //Pour tout les objets File, ajoute à la liste si c'est un .java ou
         //Fais un appel récursif si c'est un dossier, sinon rien.
         for (File file : files) {
@@ -27,11 +27,10 @@ public class Main {
                 ArrayList<File> newJavaFiles = getListJavaFiles(path + file.getName() + "/");
                 if (newJavaFiles != null) {
                     newJavaFiles.addAll(allJavaFiles);
-                    allJavaFiles = newJavaFiles; //DÉCOMMENTER SI ON VEUT PASSER TOUS LES DOSSIERS RÉCURSIVEMENT
+                    allJavaFiles = newJavaFiles;
                 }
             }
         }
-
         return allJavaFiles;
     }
 
@@ -39,6 +38,7 @@ public class Main {
     public static ArrayList<ClasseMetriques> readFiles(ArrayList<File> files) {
         ArrayList<ClasseMetriques> classeMetriques = new ArrayList<ClasseMetriques>();
         int importLineCounter = 0;
+        System.out.println(files);
 
         for (int i = 0; i < files.size(); i++) {
             File file = files.get(i);
@@ -160,12 +160,12 @@ public class Main {
 
     public static void main(String[] args) {
         //String folder = "./classesTest/jfree/chart";
-        //String folder = "E:/Documents/GitHub/QualiteLogiciel/TP1/";
+        String folder = "E:/Downloads/jfree/chart/ChartColor.java";
         //String folder = "E:/Documents/GitHub/QualiteLogiciel/TP1/classesTest/jfree/";
 
-        var scan = new Scanner(System.in);
-        System.out.println("Veuillez entrer le chemin du dossier ou fichier à analyser.");
-        String folder = scan.nextLine();
+//        var scan = new Scanner(System.in);
+//        System.out.println("Veuillez entrer le chemin du dossier ou fichier à analyser.");
+//        String folder = scan.nextLine();
 
         ArrayList<File> listFiles = getListJavaFiles(folder);
 
@@ -173,4 +173,4 @@ public class Main {
 
         writeCSV(classeMetriques, "./");
     }
-}	
+}
