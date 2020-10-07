@@ -17,6 +17,7 @@ public class Main {
                 allJavaFiles.add(directory);
                 return allJavaFiles;
             }
+            else return null;
         }
         //Pour tout les objets File, ajoute à la liste si c'est un .java ou
         //Fais un appel récursif si c'est un dossier, sinon rien.
@@ -38,36 +39,39 @@ public class Main {
     public static ArrayList<ClasseMetriques> readFiles(ArrayList<File> files) {
         ArrayList<ClasseMetriques> classeMetriques = new ArrayList<ClasseMetriques>();
         int importLineCounter = 0;
-        System.out.println(files);
 
-        for (int i = 0; i < files.size(); i++) {
-            File file = files.get(i);
-            System.out.println(file);
+        try {
+            for (int i = 0; i < files.size(); i++) {
+                File file = files.get(i);
 
-            try {
-                Scanner reader = new Scanner(file);
+                try {
+                    Scanner reader = new Scanner(file);
 
-                while (reader.hasNextLine()) {
-                    String line = reader.nextLine();
+                    while (reader.hasNextLine()) {
+                        String line = reader.nextLine();
 
 
-                    if (isImportLines(line)) { //si c'est une déclaration de "import ..."
-                        importLineCounter++;
+                        if (isImportLines(line)) { //si c'est une déclaration de "import ..."
+                            importLineCounter++;
+                        }
+
+                        if (isClassOrJavadoc(line)) {
+                            line = findEndClass(reader, line);
+                            ClasseMetriques nouvelleClasse = new ClasseMetriques(files.get(i).toString(), line, importLineCounter);
+                            classeMetriques.add(nouvelleClasse);
+                        }
                     }
-
-                    if (isClassOrJavadoc(line)) {
-                        line = findEndClass(reader, line);
-                        ClasseMetriques nouvelleClasse = new ClasseMetriques(files.get(i).toString(), line, importLineCounter);
-                        classeMetriques.add(nouvelleClasse);
-                    }
+                    importLineCounter = 0;
+                    reader.close();
+                } catch (FileNotFoundException e) {
+                    System.out.println("File not found");
+                    e.printStackTrace();
                 }
-                importLineCounter = 0;
-                reader.close();
-            } catch (FileNotFoundException e) {
-                System.out.println("File not found");
-                e.printStackTrace();
             }
+        } catch (NullPointerException e){
+            System.out.println("No java file found");
         }
+
         return classeMetriques;
 
     }
@@ -160,7 +164,7 @@ public class Main {
 
     public static void main(String[] args) {
         //String folder = "./classesTest/jfree/chart";
-        String folder = "E:/Downloads/jfree/chart/ChartColor.java";
+        String folder = "E:/Downloads/jfree/chart/ChartColor.txt";
         //String folder = "E:/Documents/GitHub/QualiteLogiciel/TP1/classesTest/jfree/";
 
 //        var scan = new Scanner(System.in);
