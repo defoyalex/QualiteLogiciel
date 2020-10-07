@@ -61,6 +61,7 @@ public class Main {
                         classeMetriques.add(nouvelleClasse);
                     }
                 }
+                importLineCounter = 0;
                 reader.close();
             } catch (FileNotFoundException e) {
                 System.out.println("File not found");
