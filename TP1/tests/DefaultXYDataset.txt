@@ -1,0 +1,61 @@
+/**
+ * A default implementation of the {@link XYDataset} interface that stores
+ * data values in arrays of double primitives.
+ *
+ * @since 1.0.2
+ */
+public class DefaultXYDataset<S extends Comparable<S>> 
+        extends AbstractXYDataset<S>
+        implements XYDataset<S>, PublicCloneable {
+
+    /**
+     * Storage for the series keys.  This list must be kept in sync with the
+     * seriesList.
+     */
+    private List<S> seriesKeys;
+
+    /**
+     * Storage for the series in the dataset.  We use a list because the
+     * order of the series is significant.  This list must be kept in sync
+     * with the seriesKeys list.
+     */
+    private List seriesList;
+
+    /**
+     * Creates a new {@code DefaultXYDataset} instance, initially
+     * containing no data.
+     */
+    public DefaultXYDataset() {
+        this.seriesKeys = new ArrayList<>();
+        this.seriesList = new java.util.ArrayList();
+    }
+
+
+    /**
+     * Creates an independent copy of this dataset.
+     *
+     * @return The cloned dataset.
+     *
+     * @throws CloneNotSupportedException if there is a problem cloning the
+     *     dataset (for instance, if a non-cloneable object is used for a
+     *     series key).
+     */
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        DefaultXYDataset clone = (DefaultXYDataset) super.clone();
+        clone.seriesKeys = new java.util.ArrayList(this.seriesKeys);
+        clone.seriesList = new ArrayList(this.seriesList.size());
+        for (int i = 0; i < this.seriesList.size(); i++) {
+            double[][] data = (double[][]) this.seriesList.get(i);
+            double[] x = data[0];
+            double[] y = data[1];
+            double[] xx = new double[x.length];
+            double[] yy = new double[y.length];
+            System.arraycopy(x, 0, xx, 0, x.length);
+            System.arraycopy(y, 0, yy, 0, y.length);
+            clone.seriesList.add(i, new double[][] {xx, yy});
+        }
+        return clone;
+    }
+
+}

@@ -30,6 +30,10 @@ public class ClasseMetriques extends Metriques {
 		this.bc = this.dc/this.wmc;
 
     }
+
+    public ArrayList<MethodeMetriques> getMethodeMetriquesList(){
+    	return this.methodeMetriquesList;
+	}
 	
 	//Calcul la métrique Weighted Method per Class
 	public void calculateWMC(){
@@ -51,13 +55,11 @@ public class ClasseMetriques extends Metriques {
     public void countLines(String classInString) {
         String lines[] = classInString.split("\\r?\\n");
 		int javadocLineCount = 0;
-		this.isClassJavadoc = lines[0].contains("/**");
+		this.isClassJavadoc = lines[0].contains("/**")||lines[1].contains("/**");
 
         ArrayList<MethodeMetriques> methodeMetriquesList = new ArrayList<MethodeMetriques>();
 
-
         for (int i = 0; i < lines.length; i++) {
-			
             String line = lines[i];
 			
 			if(isJavadocMultipleLineComment(line) && !isClassJavadoc){
@@ -71,10 +73,8 @@ public class ClasseMetriques extends Metriques {
 					i++;
 				}
 			}
-			
-			
-            String isComment = this.isComment(line);
 
+            String isComment = this.isComment(line);
 			if (this.isMethod(lines, i)) {
 				boolean firstBracketFound = false;
 

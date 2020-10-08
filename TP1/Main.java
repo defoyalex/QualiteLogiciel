@@ -7,13 +7,13 @@ public class Main {
 
     /* Fait un tableau avec tous les fichiers .java à partir du chemin
     d'un répertoire */
-    public static ArrayList<File> getListJavaFiles(String path) {
+    public static ArrayList<File> getListFiles(String path, String extension) {
         File directory = new File(path);
         File[] files = directory.listFiles();
         ArrayList<File> allJavaFiles = new ArrayList<File>(); //Fait un ArrayList de tous les fichiers dans le dossier
 
         if (!directory.isDirectory()) {  //si c'est pas un dossier et plutôt un fichier
-            if (directory.getName().endsWith(".java")) {
+            if (directory.getName().endsWith(extension)) {
                 allJavaFiles.add(directory);
                 return allJavaFiles;
             }
@@ -22,10 +22,10 @@ public class Main {
         //Pour tout les objets File, ajoute à la liste si c'est un .java ou
         //Fais un appel récursif si c'est un dossier, sinon rien.
         for (File file : files) {
-            if (file.getName().endsWith(".java")) {
+            if (file.getName().endsWith(extension)) {
                 allJavaFiles.add(file);
             } else if (file.isDirectory()) {
-                ArrayList<File> newJavaFiles = getListJavaFiles(path + file.getName() + "/");
+                ArrayList<File> newJavaFiles = getListFiles(path + file.getName() + "/",extension);
                 if (newJavaFiles != null) {
                     newJavaFiles.addAll(allJavaFiles);
                     allJavaFiles = newJavaFiles;
@@ -49,7 +49,6 @@ public class Main {
 
                     while (reader.hasNextLine()) {
                         String line = reader.nextLine();
-
 
                         if (isImportLines(line)) { //si c'est une déclaration de "import ..."
                             importLineCounter++;
@@ -90,7 +89,6 @@ public class Main {
         Pattern patternClass = Pattern.compile("((^public\\s+)((final|abstract)\\s+)?(enum|interface|class)(\\s))|(^class\\s)");
 
         while (!patternClass.matcher(currentLine).find() && reader.hasNextLine()) {
-            System.out.println(currentLine);
             totalString += currentLine + "\n";
             currentLine = reader.nextLine();
         }
@@ -109,14 +107,13 @@ public class Main {
                 firstBracketFound = true;
             }
             if (numberOfBrackets == 0 && firstBracketFound) { //on sait qu'on a la dernière ligne de la méthode lorsque on arrive à zéro
-                System.out.println(totalString + currentLine);
                 return totalString + currentLine;
             } else {
                 totalString += currentLine + "\n";
             }
             currentLine = reader.nextLine();
         }
-        return totalString;
+        return totalString += currentLine;
     }
 
     // Pour vérifier si la ligne est le début d'une classe
@@ -163,14 +160,14 @@ public class Main {
 
     public static void main(String[] args) {
         //String folder = "./classesTest/jfree/chart";
-        String folder = "E:/Downloads/jfree/chart/ChartColor.txt";
+        //String folder = "E:/Downloads/jfree/chart/ChartColor.txt";
         //String folder = "E:/Documents/GitHub/QualiteLogiciel/TP1/classesTest/jfree/";
 
-//        var scan = new Scanner(System.in);
-//        System.out.println("Veuillez entrer le chemin du dossier ou fichier à analyser.");
-//        String folder = scan.nextLine();
+        var scan = new Scanner(System.in);
+        System.out.println("Veuillez entrer le chemin du dossier ou fichier à analyser.");
+        String folder = scan.nextLine();
 
-        ArrayList<File> listFiles = getListJavaFiles(folder);
+        ArrayList<File> listFiles = getListFiles(folder,".java");
 
         ArrayList<ClasseMetriques> classeMetriques = readFiles(listFiles);
 

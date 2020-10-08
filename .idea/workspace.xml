@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
       <artifact name="QualiteLogiciel:jar" />
@@ -16,6 +19,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -28,23 +33,99 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="true" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
     <property name="last.edited.regexp" value="}" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Downloads" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
-  <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.MethodeMetriquesTest">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="QualiteLogiciel" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ClasseMetriquesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="QualiteLogiciel" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ClasseMetriquesTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="QualiteLogiciel" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MainTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="QualiteLogiciel" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MainTest2" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MethodeMetriquesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="QualiteLogiciel" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MethodeMetriquesTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.MainTest" />
+      <item itemvalue="JUnit.MainTest2" />
+      <item itemvalue="JUnit.ClasseMetriquesTest" />
+      <item itemvalue="JUnit.MethodeMetriquesTest" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MethodeMetriquesTest" />
+        <item itemvalue="JUnit.ClasseMetriquesTest" />
+        <item itemvalue="JUnit.MainTest" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.MainTest2" />
       </list>
     </recent_temporary>
   </component>
@@ -56,14 +137,30 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1600886184441</updated>
+      <workItem from="1602095018153" duration="19053000" />
     </task>
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="214" y="63" width="1089" height="761" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602099213416">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="214" y="63" width="1089" height="761" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1602099213416" />
+    <state x="93" y="93" width="1350" height="638" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1602125589098">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="93" y="93" width="1350" height="638" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1602125589098" />
     <state x="830" y="257" key="#com.intellij.ide.util.MemberChooser" timestamp="1601770525681">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="830" y="257" key="#com.intellij.ide.util.MemberChooser/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601770525681" />
+    <state x="498" y="202" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1602099655481">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="498" y="202" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1602099655481" />
     <state x="705" y="292" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1601045656923">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
@@ -72,57 +169,76 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="755" y="303" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1602077672776" />
-    <state x="784" y="426" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1601045260303">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state x="588" y="316" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1602099332491">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="588" y="316" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1602099332491" />
     <state x="784" y="426" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601045260303" />
     <state x="805" y="311" key="FileChooserDialogImpl" timestamp="1602078996330">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="805" y="311" key="FileChooserDialogImpl/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1602078996330" />
-    <state width="2005" height="261" key="GridCell.Tab.0.bottom" timestamp="1602085825222">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1602126542897">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1602126542897" />
     <state width="2005" height="261" key="GridCell.Tab.0.bottom/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1602085825222" />
-    <state width="2005" height="261" key="GridCell.Tab.0.center" timestamp="1602085825221">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1602126542897">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1602126542897" />
     <state width="2005" height="261" key="GridCell.Tab.0.center/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1602085825221" />
-    <state width="2005" height="261" key="GridCell.Tab.0.left" timestamp="1602085825221">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1602126542897">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1602126542897" />
     <state width="2005" height="261" key="GridCell.Tab.0.left/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1602085825221" />
-    <state width="2005" height="261" key="GridCell.Tab.0.right" timestamp="1602085825222">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1602126542897">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1602126542897" />
     <state width="2005" height="261" key="GridCell.Tab.0.right/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1602085825222" />
-    <state width="2005" height="283" key="GridCell.Tab.1.bottom" timestamp="1601781166105">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1602125399673">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1602125399673" />
     <state width="2005" height="283" key="GridCell.Tab.1.bottom/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601781166105" />
-    <state width="2005" height="283" key="GridCell.Tab.1.center" timestamp="1601781166105">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1602125399673">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1602125399673" />
     <state width="2005" height="283" key="GridCell.Tab.1.center/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601781166105" />
-    <state width="2005" height="283" key="GridCell.Tab.1.left" timestamp="1601781166105">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1602125399672">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1602125399672" />
     <state width="2005" height="283" key="GridCell.Tab.1.left/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601781166105" />
-    <state width="2005" height="283" key="GridCell.Tab.1.right" timestamp="1601781166105">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1602125399673">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1602125399673" />
     <state width="2005" height="283" key="GridCell.Tab.1.right/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601781166105" />
-    <state x="533" y="201" key="SettingsEditor" timestamp="1601850656119">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state x="400" y="115" key="SettingsEditor" timestamp="1602095630909">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="400" y="115" key="SettingsEditor/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1602095630909" />
     <state x="533" y="201" key="SettingsEditor/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601850656119" />
+    <state x="498" y="304" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1602096326013">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="498" y="304" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1602096326013" />
+    <state x="973" y="41" width="456" height="463" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1602123418472">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="973" y="41" width="456" height="463" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1602123418472" />
     <state x="725" y="313" key="refactoring.ChangeSignatureDialog" timestamp="1602084475794">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="725" y="313" key="refactoring.ChangeSignatureDialog/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1602084475794" />
-    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup" timestamp="1601850537683">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state x="515" y="180" width="672" height="503" key="search.everywhere.popup" timestamp="1602095622162">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="515" y="180" width="672" height="503" key="search.everywhere.popup/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1602095622162" />
     <state x="687" y="243" width="672" height="678" key="search.everywhere.popup/0.0.2048.1112/1114.-1024.1024.819@0.0.2048.1112" timestamp="1601850537683" />
   </component>
   <component name="XDebuggerManager">
@@ -134,6 +250,7 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/QualiteLogiciel$MainTest_AssertFiles.ic" NAME="MainTest.AssertFiles Coverage Results" MODIFIED="1602099674440" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/QualiteLogiciel$Main.ic" NAME="Main Coverage Results" MODIFIED="1601252074984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

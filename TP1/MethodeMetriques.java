@@ -10,8 +10,7 @@ public class MethodeMetriques extends Metriques {
     private int cc; //Complexité cyclomatique
 
     public MethodeMetriques(String chemin, String className, String methodInString, int javadocCount) {
-		System.out.println(javadocCount);
-		System.out.println("MEETHOOODE"+ " in " + className +methodInString);
+
 
         this.chemin = chemin;
         this.className = className;
@@ -30,6 +29,10 @@ public class MethodeMetriques extends Metriques {
 
     }
 
+    public String getMethodName(){
+    	return this.methodName;
+	}
+
 	//Renvoie le nom de la méthode et ave le type des arguments en attribut
 	public String findMethodName(String[] lines){
 		//Sépare le string par les retours de ligne
@@ -45,7 +48,6 @@ public class MethodeMetriques extends Metriques {
 			j++;
 
 		}
-		System.out.println("Méthode" + nomMethod);
 
 
 		//Trouver le pattern qui correspond au nom de méthode
@@ -59,10 +61,7 @@ public class MethodeMetriques extends Metriques {
 		
 		//Sépare tous les mots par les espaces
 		String[] methodArray = methodName.split(",");
-		
-		for(int i=0; i<methodArray.length; i++){
-			System.out.println(i + methodArray[i]);
-		}
+
 		
 
 		//Le premier mot du tableau est le nom de la méthode
@@ -84,14 +83,6 @@ public class MethodeMetriques extends Metriques {
 
 	public int getComplexity(){
 		return this.cc;
-	}
-	
-	public int getLOC(){
-		return this.loc;
-	}
-	
-	public int getCLOC(){
-		return this.cloc;
 	}
 
     private void analyseLines(String[] lines) {
@@ -123,7 +114,6 @@ public class MethodeMetriques extends Metriques {
 							countPredicate++;
 						}
                     }
-					
                     i = countLineComment(lines, i);
                     break;
 				case "Javadoc":

@@ -16,6 +16,22 @@ public abstract class Metriques {
        classe : dc/wmc */
     protected double bc;
 
+    public String getClassName() {
+        return this.className;
+    }
+
+    public int getLOC() {
+        return this.loc;
+    }
+
+    public int getCLOC(){
+        return this.cloc;
+    }
+
+    public double getDC() {
+        return this.dc;
+    }
+
     public String isComment(String line) {
 
         if (isSingleLineComment(line)) {

@@ -1,0 +1,310 @@
+/**
+ * A collection of utility methods for creating some standard charts with
+ * JFreeChart.
+ */
+public abstract class ChartFactory {
+
+    /** The chart theme. */
+    private static ChartTheme currentTheme = new StandardChartTheme("JFree");
+
+    /**
+     * Returns the current chart theme used by the factory.
+     *
+     * @return The chart theme.
+     *
+     * @see #setChartTheme(ChartTheme)
+     * @see ChartUtils#applyCurrentTheme(JFreeChart)
+     *
+     * @since 1.0.11
+     */
+    public static ChartTheme getChartTheme() {
+        return currentTheme;
+    }
+
+    /**
+     * Sets the current chart theme.  This will be applied to all new charts
+     * created via methods in this class.
+     *
+     * @param theme  the theme ({@code null} not permitted).
+     *
+     * @see #getChartTheme()
+     * @see ChartUtils#applyCurrentTheme(JFreeChart)
+     *
+     * @since 1.0.11
+     */
+    public static void setChartTheme(ChartTheme theme) {
+        Args.nullNotPermitted(theme, "theme");
+        currentTheme = theme;
+
+        // here we do a check to see if the user is installing the "Legacy"
+        // theme, and reset the bar painters in that case...
+        if (theme instanceof StandardChartTheme) {
+            StandardChartTheme sct = (StandardChartTheme) theme;
+            if (sct.getName().equals("Legacy")) {
+                BarRenderer.setDefaultBarPainter(new StandardBarPainter());
+                XYBarRenderer.setDefaultBarPainter(new StandardXYBarPainter());
+            }
+            else {
+                BarRenderer.setDefaultBarPainter(new GradientBarPainter());
+                XYBarRenderer.setDefaultBarPainter(new GradientXYBarPainter());
+            }
+        }
+    }
+   
+
+    /**
+     * Creates a pie chart with default settings that compares 2 datasets.
+     * The colour of each section will be determined by the move from the value
+     * for the same key in {@code previousDataset}. ie if value1 &gt; 
+     * value2 then the section will be in green (unless 
+     * {@code greenForIncrease} is {@code false}, in which case it 
+     * would be {@code red}). Each section can have a shade of red or 
+     * green as the difference can be tailored between 0% (black) and 
+     * percentDiffForMaxScale% (bright red/green).
+     * <p>
+     * For instance if {@code percentDiffForMaxScale} is 10 (10%), a
+     * difference of 5% will have a half shade of red/green, a difference of
+     * 10% or more will have a maximum shade/brightness of red/green.
+     * <P>
+     * The chart object returned by this method uses a {@link PiePlot} instance
+     * as the plot.
+     * <p>
+     * Written by <a href="mailto:opensource@objectlab.co.uk">Benoit
+     * Xhenseval</a>.
+     *
+     * @param title  the chart title ({@code null} permitted).
+     * @param dataset  the dataset for the chart ({@code null} permitted).
+     * @param previousDataset  the dataset for the last run, this will be used
+     *                         to compare each key in the dataset
+     * @param percentDiffForMaxScale scale goes from bright red/green to black,
+     *                               percentDiffForMaxScale indicate the change
+     *                               required to reach top scale.
+     * @param greenForIncrease  an increase since previousDataset will be
+     *                          displayed in green (decrease red) if true.
+     * @param legend  a flag specifying whether or not a legend is required.
+     * @param tooltips  configure chart to generate tool tips?
+     * @param locale  the locale ({@code null} not permitted).
+     * @param subTitle displays a subtitle with colour scheme if true
+     * @param showDifference  create a new dataset that will show the %
+     *                        difference between the two datasets.
+     *
+     * @return A pie chart.
+     *
+     * @since 1.0.7
+     */
+    public static JFreeChart createPieChart(String title, PieDataset dataset,
+            PieDataset previousDataset, int percentDiffForMaxScale,
+            boolean greenForIncrease, boolean legend, boolean tooltips,
+            Locale locale, boolean subTitle, boolean showDifference) {
+
+        PiePlot plot = new PiePlot(dataset);
+        plot.setLabelGenerator(new StandardPieSectionLabelGenerator(locale));
+        plot.setInsets(new RectangleInsets(0.0, 5.0, 5.0, 5.0));
+
+        if (tooltips) {
+            plot.setToolTipGenerator(new StandardPieToolTipGenerator(locale));
+        }
+
+        List keys = dataset.getKeys();
+        DefaultPieDataset series = null;
+        if (showDifference) {
+            series = new DefaultPieDataset();
+        }
+
+        double colorPerPercent = 255.0 / percentDiffForMaxScale;
+        for (Iterator it = keys.iterator(); it.hasNext();) {
+            Comparable key = (Comparable) it.next();
+            Number newValue = dataset.getValue(key);
+            Number oldValue = previousDataset.getValue(key);
+
+            if (oldValue == null) {
+                if (greenForIncrease) {
+                    plot.setSectionPaint(key, Color.GREEN);
+                }
+                else {
+                    plot.setSectionPaint(key, Color.RED);
+                }
+                if (showDifference) {
+                    assert series != null; // suppresses compiler warning
+                    series.setValue(key + " (+100%)", newValue);
+                }
+            }
+            else {
+                double percentChange = (newValue.doubleValue()
+                        / oldValue.doubleValue() - 1.0) * 100.0;
+                double shade
+                    = (Math.abs(percentChange) >= percentDiffForMaxScale ? 255
+                    : Math.abs(percentChange) * colorPerPercent);
+                if (greenForIncrease
+                        && newValue.doubleValue() > oldValue.doubleValue()
+                        || !greenForIncrease && newValue.doubleValue()
+                        < oldValue.doubleValue()) {
+                    plot.setSectionPaint(key, new Color(0, (int) shade, 0));
+                }
+                else {
+                    plot.setSectionPaint(key, new Color((int) shade, 0, 0));
+                }
+                if (showDifference) {
+                    assert series != null; // suppresses compiler warning
+                    series.setValue(key + " (" + (percentChange >= 0 ? "+" : "")
+                            + NumberFormat.getPercentInstance().format(
+                            percentChange / 100.0) + ")", newValue);
+                }
+            }
+        }
+
+        if (showDifference) {
+            plot.setDataset(series);
+        }
+
+        JFreeChart chart =  new JFreeChart(title,
+                JFreeChart.DEFAULT_TITLE_FONT, plot, legend);
+
+        if (subTitle) {
+            TextTitle subtitle = new TextTitle("Bright " + (greenForIncrease 
+                    ? "red" : "green") + "=change >=-" + percentDiffForMaxScale
+                    + "%, Bright " + (!greenForIncrease ? "red" : "green")
+                    + "=change >=+" + percentDiffForMaxScale + "%",
+                    new Font("SansSerif", Font.PLAIN, 10));
+            chart.addSubtitle(subtitle);
+        }
+        currentTheme.apply(chart);
+        return chart;
+    }
+
+
+ 
+    /**
+     * Creates a bar chart.  The chart object returned by this method uses a
+     * {@link CategoryPlot} instance as the plot, with a {@link CategoryAxis}
+     * for the domain axis, a {@link NumberAxis} as the range axis, and a
+     * {@link BarRenderer} as the renderer.
+     *
+     * @param title  the chart title ({@code null} permitted).
+     * @param categoryAxisLabel  the label for the category axis
+     *                           ({@code null} permitted).
+     * @param valueAxisLabel  the label for the value axis
+     *                        ({@code null} permitted).
+     * @param dataset  the dataset for the chart ({@code null} permitted).
+     * @param orientation  the plot orientation (horizontal or vertical)
+     *                     ({@code null} not permitted).
+     * @param legend  a flag specifying whether or not a legend is required.
+     * @param tooltips  configure chart to generate tool tips?
+     * @param urls  configure chart to generate URLs?
+     *
+     * @return A bar chart.
+     */
+    public static JFreeChart createBarChart(String title,
+            String categoryAxisLabel, String valueAxisLabel,
+            CategoryDataset dataset, PlotOrientation orientation,
+            boolean legend, boolean tooltips, boolean urls) {
+
+        Args.nullNotPermitted(orientation, "orientation");
+        CategoryAxis categoryAxis = new CategoryAxis(categoryAxisLabel);
+        ValueAxis valueAxis = new NumberAxis(valueAxisLabel);
+
+        BarRenderer renderer = new BarRenderer();
+        if (orientation == PlotOrientation.HORIZONTAL) {
+            ItemLabelPosition position1 = new ItemLabelPosition(
+                    ItemLabelAnchor.OUTSIDE3, TextAnchor.CENTER_LEFT);
+            renderer.setDefaultPositiveItemLabelPosition(position1);
+            ItemLabelPosition position2 = new ItemLabelPosition(
+                    ItemLabelAnchor.OUTSIDE9, TextAnchor.CENTER_RIGHT);
+            renderer.setDefaultNegativeItemLabelPosition(position2);
+        } else if (orientation == PlotOrientation.VERTICAL) {
+            ItemLabelPosition position1 = new ItemLabelPosition(
+                    ItemLabelAnchor.OUTSIDE12, TextAnchor.BOTTOM_CENTER);
+            renderer.setDefaultPositiveItemLabelPosition(position1);
+            ItemLabelPosition position2 = new ItemLabelPosition(
+                    ItemLabelAnchor.OUTSIDE6, TextAnchor.TOP_CENTER);
+            renderer.setDefaultNegativeItemLabelPosition(position2);
+        }
+        if (tooltips) {
+            renderer.setDefaultToolTipGenerator(
+                    new StandardCategoryToolTipGenerator());
+        }
+        if (urls) {
+            renderer.setDefaultItemURLGenerator(
+                    new StandardCategoryURLGenerator());
+        }
+
+        CategoryPlot plot = new CategoryPlot(dataset, categoryAxis, valueAxis,
+                renderer);
+        plot.setOrientation(orientation);
+        JFreeChart chart = new JFreeChart(title, JFreeChart.DEFAULT_TITLE_FONT,
+                plot, legend);
+        currentTheme.apply(chart);
+        return chart;
+
+    }
+ 
+
+    
+    /**
+     * Creates a histogram chart.  This chart is constructed with an
+     * {@link XYPlot} using an {@link XYBarRenderer}.  The domain and range
+     * axes are {@link NumberAxis} instances.
+     *
+     * @param title  the chart title ({@code null} permitted).
+     * @param xAxisLabel  the x axis label ({@code null} permitted).
+     * @param yAxisLabel  the y axis label ({@code null} permitted).
+     * @param dataset  the dataset ({@code null} permitted).
+     * @return A chart.
+     * 
+     * @since 1.0.20
+     */
+    public static JFreeChart createHistogram(String title,
+            String xAxisLabel, String yAxisLabel, IntervalXYDataset dataset) {
+        return createHistogram(title, xAxisLabel, yAxisLabel, dataset,
+                PlotOrientation.VERTICAL, true, true, false);
+    }
+
+    /**
+     * Creates a histogram chart.  This chart is constructed with an
+     * {@link XYPlot} using an {@link XYBarRenderer}.  The domain and range
+     * axes are {@link NumberAxis} instances.
+     *
+     * @param title  the chart title ({@code null} permitted).
+     * @param xAxisLabel  the x axis label ({@code null} permitted).
+     * @param yAxisLabel  the y axis label ({@code null} permitted).
+     * @param dataset  the dataset ({@code null} permitted).
+     * @param orientation  the orientation (horizontal or vertical)
+     *                     ({@code null} NOT permitted).
+     * @param legend  create a legend?
+     * @param tooltips  display tooltips?
+     * @param urls  generate URLs?
+     *
+     * @return The chart.
+     */
+    public static JFreeChart createHistogram(String title,
+            String xAxisLabel, String yAxisLabel, IntervalXYDataset dataset,
+            PlotOrientation orientation, boolean legend, boolean tooltips,
+            boolean urls) {
+
+        Args.nullNotPermitted(orientation, "orientation");
+        NumberAxis xAxis = new NumberAxis(xAxisLabel);
+        xAxis.setAutoRangeIncludesZero(false);
+        ValueAxis yAxis = new NumberAxis(yAxisLabel);
+
+        XYItemRenderer renderer = new XYBarRenderer();
+        if (tooltips) {
+            renderer.setDefaultToolTipGenerator(new StandardXYToolTipGenerator());
+        }
+        if (urls) {
+            renderer.setURLGenerator(new StandardXYURLGenerator());
+        }
+
+        XYPlot plot = new XYPlot(dataset, xAxis, yAxis, renderer);
+        plot.setOrientation(orientation);
+        plot.setDomainZeroBaselineVisible(true);
+        plot.setRangeZeroBaselineVisible(true);
+        JFreeChart chart = new JFreeChart(title, JFreeChart.DEFAULT_TITLE_FONT,
+                plot, legend);
+        currentTheme.apply(chart);
+        return chart;
+
+    }
+
+
+
+}
