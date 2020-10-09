@@ -1,3 +1,6 @@
+Par Jonathan Côté - matricule: 955648
+et Alex Defoy  - matricule: 20131653
+
 Pour utiliser notre programme, il suffit de le démarrer.
 Ensuite, il demandera d'entrer le chemin pour atteindre le dossier ou fichier désiré.
 S'il s'agit d'un dossier, veuillez vous assurer qu'il y ait un "\" à la fin du chemin.
