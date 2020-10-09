@@ -16,7 +16,7 @@ public class ClasseMetriques extends Metriques {
     public ClasseMetriques(String path, String classInString, int numberImportLines) {
 
 		this.loc = numberImportLines;
-        Pattern p = Pattern.compile("(\\w*).java");
+        Pattern p = Pattern.compile("[\\w-]*\\.java");
         Matcher m = p.matcher(path);
         m.find();
         this.className = m.group().replace(".java", "");
