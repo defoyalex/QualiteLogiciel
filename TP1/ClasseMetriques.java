@@ -37,7 +37,7 @@ public class ClasseMetriques extends Metriques {
         countLines(classInString);
 		
 
-		this.addMethodLines();
+		this.addMethodLines(); //Ajoute le loc et cloc des méthodes
 		this.dc = (double)this.cloc/(double)this.loc;
 		this.calculateWMC();
 		this.bc = this.dc/this.wmc;
@@ -89,7 +89,9 @@ public class ClasseMetriques extends Metriques {
 
         for (int i = 0; i < lines.length; i++) {
             String line = lines[i];
-			
+
+            //Incrémente le compteur de Javadocline au cas où il appartienne
+			//à une méthode
 			if(isJavadocMultipleLineComment(line) && !isClassJavadoc){
 				while(true){
 					javadocLineCount++;
@@ -112,6 +114,8 @@ public class ClasseMetriques extends Metriques {
 				Pattern patternOpeningBracket = Pattern.compile("(\\u007b)"); //on regarde pour une braquette ouvrante
 				Pattern patternClosingBracket = Pattern.compile("(\\u007d)"); //on regarde pour une braquette fermante
 
+				//On incrémente/décrémente le nombre de bracket jusqu'à obtenir 0, ce qui indique
+				//la fin de la méthode
 				while (i < lines.length) {
 					String currentLine = lines[i];
 
@@ -126,9 +130,11 @@ public class ClasseMetriques extends Metriques {
 						numberOfBrackets++;
 						firstBracketFound = true;
 					}
-					if (numberOfBrackets == 0 && firstBracketFound) { //on sait qu'on a la dernière ligne de la méthode lorsque on arrive à zéro
+					//on sait qu'on a la dernière ligne de la méthode lorsque on arrive à zéro
+					if (numberOfBrackets == 0 && firstBracketFound) {
 						methodToString = methodToString + "\n" + currentLine;
-						MethodeMetriques newMethod = new MethodeMetriques(this.chemin, this.className, methodToString, javadocLineCount);
+						MethodeMetriques newMethod = new MethodeMetriques(this.chemin, this.className,
+								methodToString, javadocLineCount);
 						methodeMetriquesList.add(newMethod);
 
 						break;
@@ -181,11 +187,12 @@ public class ClasseMetriques extends Metriques {
 	 */
     public boolean isMethod(String[] lines, int i) {
         Pattern patternStart = Pattern.compile("(public|private|protected)(\\s)+(\\w*\\s)?(\\S*\\s)?[\\w]*\\s?(\\u0028)(.*)");
-		//Pattern patternTotal = Pattern.compile("(public|private|protected)(\\s)+(\\w*\\s)?[\\w]*(\\u0028)[\\w\\s\\[\\]\\<\\>\\?,\\.]*(\\u0029)(\\s)*(\\u007b)");
-        //u0028 = "(", u0029 = ")" et u007b = "{"
 		Pattern patternCodeLine = Pattern.compile(";");
 		String methodStart = lines[i];
-		
+
+		/*Tant qu'on n'arrive pas à la fin de la méthode ou qu'on ne trouve pas
+		  une ligne de code, on concatène les lignes pour vérifier si c'est une méthode
+		  déclarées sur plusieurs lignes */
 		if(patternStart.matcher(lines[i]).find()){
 			while(i<lines.length && !patternCodeLine.matcher(lines[i]).find()){
 				if(patternStart.matcher(methodStart).find()){
@@ -219,7 +226,9 @@ public class ClasseMetriques extends Metriques {
 		} catch (IOException e) { 
 			e.printStackTrace(); 
 		}
-		
+
+		//On écrit chacune des méthodes de l'instantation dans le fichier au chemin
+		// pathMethod
 		for(MethodeMetriques methodeMetriques: this.methodeMetriquesList){
 			methodeMetriques.writeCSV(pathMethod);
 		}

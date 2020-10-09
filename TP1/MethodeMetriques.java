@@ -53,7 +53,7 @@ public class MethodeMetriques extends Metriques {
 
 	/**
 	 * Prend les lignes de codes de déclaration de la méthode comme entrée.
-	 * Retourne le nom de la méthode et ave le type des arguments en attribut.
+	 * Retourne le nom de la méthode avec le type de ses arguments .
 	 *
 	 * @param lines
 	 * @return
@@ -117,6 +117,7 @@ public class MethodeMetriques extends Metriques {
 	/**
 	 * Prend en entrée les lignes de code déclarant la méthode.
 	 * Permet de calculer la complexité cyclomatique qui est égal au nombre de (for, if, while, etc.) + 1
+	 * Permet de trouver d'autres métriques telles que cloc, loc, etc.
 	 *
 	 * @param lines
 	 */

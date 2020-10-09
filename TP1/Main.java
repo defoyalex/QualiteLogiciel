@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class Main {
 
     /**
-     * Fait un tableau avec tous les fichiers .java à partir du chemin
+     * Fait un tableau avec tous les fichiers avec une certaine extension (ex: .java) à partir du chemin
      *     d'un répertoire
      * @param path
      * @param extension
@@ -66,7 +66,8 @@ public class Main {
 
                         if (isClassOrJavadoc(line)) {
                             line = classToString(reader, line);
-                            ClasseMetriques nouvelleClasse = new ClasseMetriques(files.get(i).toString(), line, importLineCounter);
+                            ClasseMetriques nouvelleClasse = new ClasseMetriques(files.get(i).toString(),
+                                    line, importLineCounter);
                             classeMetriques.add(nouvelleClasse);
                         }
                     }
