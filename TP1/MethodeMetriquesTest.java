@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MethodeMetriquesTest {
@@ -28,7 +27,7 @@ public class MethodeMetriquesTest {
 
         try {
             Scanner reader = new Scanner(file);
-            classInString = Main.findEndClass(reader, "");
+            classInString = Main.classToString(reader, "");
             classe = new ClasseMetriques(path+".java",classInString,0);
             methodes = classe.getMethodeMetriquesList();
             assertEquals(1, methodes.size(), "MethodeMetrique not equal to one");
@@ -54,7 +53,7 @@ public class MethodeMetriquesTest {
 
         try {
             Scanner reader = new Scanner(file);
-            classInString = Main.findEndClass(reader, "");
+            classInString = Main.classToString(reader, "");
             classe = new ClasseMetriques(path+".java",classInString,0);
             methodes = classe.getMethodeMetriquesList();
             assertEquals(2, methodes.size(), "MethodeMetrique not equal to one");

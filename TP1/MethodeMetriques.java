@@ -5,10 +5,22 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
+/**
+ * Classe pour les méthodes trouvées dans le code des classes.
+ * Contient les calculs pour les métriques propres aux méthodes.
+ */
 public class MethodeMetriques extends Metriques {
     private String methodName;
     private int cc; //Complexité cyclomatique
 
+	/**
+	 * Constructor pour instancier les méthodes que l'on détecte dans le code des classes
+	 *
+	 * @param chemin
+	 * @param className
+	 * @param methodInString
+	 * @param javadocCount
+	 */
     public MethodeMetriques(String chemin, String className, String methodInString, int javadocCount) {
 
 
@@ -29,11 +41,23 @@ public class MethodeMetriques extends Metriques {
 
     }
 
+	/**
+	 * Le nom de la méthode est utilisée pour identifier les méthodes découvertes dans le code
+	 * et pour leur associer des métriques dans les fichiers CSV.
+	 *
+	 * @return le nom de la méthode
+	 */
     public String getMethodName(){
     	return this.methodName;
 	}
 
-	//Renvoie le nom de la méthode et ave le type des arguments en attribut
+	/**
+	 * Prend les lignes de codes de déclaration de la méthode comme entrée.
+	 * Retourne le nom de la méthode et ave le type des arguments en attribut.
+	 *
+	 * @param lines
+	 * @return
+	 */
 	public String findMethodName(String[] lines){
 		//Sépare le string par les retours de ligne
 
@@ -81,13 +105,23 @@ public class MethodeMetriques extends Metriques {
 		return methodName;
 	}
 
+	/**
+	 * La complexité cyclomatique est une des métriques utilisées dans nos fichiers CSV.
+	 *
+	 * @return complexité cyclomatique
+	 */
 	public int getComplexity(){
 		return this.cc;
 	}
 
+	/**
+	 * Prend en entrée les lignes de code déclarant la méthode.
+	 * Permet de calculer la complexité cyclomatique qui est égal au nombre de (for, if, while, etc.) + 1
+	 *
+	 * @param lines
+	 */
     private void analyseLines(String[] lines) {
-		//Pour calculer la complexité cyclomatique
-		//Égal au nombre de (for, if, while, etc.) + 1
+
 		int countPredicate = 1;
 
         for (int i = 1; i < lines.length; i++) { //on commence à i=1 puisque i=0 est une string vide
@@ -134,8 +168,13 @@ public class MethodeMetriques extends Metriques {
 		this.cc = countPredicate;
     }
 
-
-	//Vérifie si la ligne contient un prédicat if, while, for, etc.
+	/**
+	 * Prend en entrée une ligne de code.
+	 * Vérifie si la ligne contient un prédicat soit : if, while, for, etc.
+	 *
+	 * @param line
+	 * @return boolean où true := la ligne de code contient un prédicat
+	 */
 	public boolean containsPredicate(String line){
 		//u0028 = "(", u007b = "{"
 		Pattern predicate = Pattern.compile("\\s(if|for|while|case|default)[:\\u0028\\s\\u007b]");
@@ -147,11 +186,16 @@ public class MethodeMetriques extends Metriques {
 		return false;
 	}
 
+	/**
+	 * Update le fichier CSV pour les méthodes avec les métriques de la méthode que l'on vient de finir d'analyser.
+	 *
+	 * @param pathMethod
+	 */
 	public void writeCSV(String pathMethod){
 
 		String csv = this.chemin+","+this.className+","+this.methodName+","+
 					 this.loc+","+this.cloc+","+this.dc+","+this.cc+","+
-					 this.bc+"\n";
+					 this.bc;
 
 
 		try (FileWriter f = new FileWriter(pathMethod, true);

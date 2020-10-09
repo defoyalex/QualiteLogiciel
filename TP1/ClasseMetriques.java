@@ -6,13 +6,26 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
+/**
+ * Classe pour les classes trouvées dans le code analysé.
+ * Contient les calculs pour les métriques propres aux classes.
+ */
 public class ClasseMetriques extends Metriques {
-	/* Weighted Methods per class 
-	   Égale à la somme pondérée de complexité des méthodes*/
-    private float wmc; 
-	private ArrayList<MethodeMetriques> methodeMetriquesList;
+
+	/**
+	 * Weighted Methods per Class (WMC) égale à la somme pondérée de complexité des méthodes
+	 */
+    private float wmc;
+	private ArrayList<MethodeMetriques> methodeMetriquesList; //liste des méthodes détectées dans le code de la classe
 	private boolean isClassJavadoc;
 
+	/**
+	 * Constructor pour instancier les classes que l'on détecte dans le code des fichiers java
+	 *
+	 * @param path
+	 * @param classInString
+	 * @param numberImportLines
+	 */
     public ClasseMetriques(String path, String classInString, int numberImportLines) {
 
 		this.loc = numberImportLines;
@@ -31,11 +44,16 @@ public class ClasseMetriques extends Metriques {
 
     }
 
+	/**
+	 * @return liste des méthodes contenues dans la classe actuellement analysée
+	 */
     public ArrayList<MethodeMetriques> getMethodeMetriquesList(){
     	return this.methodeMetriquesList;
 	}
-	
-	//Calcul la métrique Weighted Method per Class
+
+	/**
+	 * Calcule la métrique Weighted Method per Class
+	 */
 	public void calculateWMC(){
 		float sommePondérée = 0;
 		for(MethodeMetriques methodeMetrique: this.methodeMetriquesList){
@@ -43,7 +61,11 @@ public class ClasseMetriques extends Metriques {
 		}
 		this.wmc = sommePondérée;
 	}
-	
+
+	/**
+	 * Données en entrée sont la liste des méthodes déclarées dans la classe actuelle.
+	 * Cette fonction ajoute le contenu des méthodes aux métriques loc et cloc de la classe.
+	 */
 	public void addMethodLines(){
 		for(MethodeMetriques methodeMetrique: this.methodeMetriquesList){
 			this.loc += methodeMetrique.getLOC();
@@ -51,7 +73,13 @@ public class ClasseMetriques extends Metriques {
 		}
 	}
 
-	//Compte LOC, CLOC et trouve les méthodes
+	/**
+	 * Prend en entrée la classe sous la forme d'une longue string.
+	 * Analyse le contenu de la string pour détecter la déclaration de méthodes
+	 * et compte les LOC et CLOC lorsque l'on est pas à l'intérieur d'une déclaration de méthode.
+	 *
+	 * @param classInString
+	 */
     public void countLines(String classInString) {
         String lines[] = classInString.split("\\r?\\n");
 		int javadocLineCount = 0;
@@ -146,9 +174,14 @@ public class ClasseMetriques extends Metriques {
 		this.methodeMetriquesList = methodeMetriquesList;
     }
 
+	/**
+	 * @param lines
+	 * @param i
+	 * @return boolean où true := si cette ligne contient le début d'une déclaration de méthode
+	 */
     public boolean isMethod(String[] lines, int i) {
         Pattern patternStart = Pattern.compile("(public|private|protected)(\\s)+(\\w*\\s)?(\\S*\\s)?[\\w]*\\s?(\\u0028)(.*)");
-		Pattern patternTotal = Pattern.compile("(public|private|protected)(\\s)+(\\w*\\s)?[\\w]*(\\u0028)[\\w\\s\\[\\]\\<\\>\\?,\\.]*(\\u0029)(\\s)*(\\u007b)");
+		//Pattern patternTotal = Pattern.compile("(public|private|protected)(\\s)+(\\w*\\s)?[\\w]*(\\u0028)[\\w\\s\\[\\]\\<\\>\\?,\\.]*(\\u0029)(\\s)*(\\u007b)");
         //u0028 = "(", u0029 = ")" et u007b = "{"
 		Pattern patternCodeLine = Pattern.compile(";");
 		String methodStart = lines[i];
@@ -165,11 +198,17 @@ public class ClasseMetriques extends Metriques {
 
         return false; //s'il trouve notre pattern à l'intérieur de la ligne de code
     }
-	
+
+	/**
+	 * Update le fichier CSV pour les classes en y mettant les métriques de la classe actuellement analysée
+	 *
+	 * @param pathClass
+	 * @param pathMethod
+	 */
 	public void writeCSV(String pathClass, String pathMethod){
 
 		String csv = this.chemin+","+this.className+","+this.loc+","+
-					 this.cloc+","+this.dc+","+this.wmc+","+this.bc+"\n";
+					 this.cloc+","+this.dc+","+this.wmc+","+this.bc;
 		
 		try (FileWriter f = new FileWriter(pathClass, true); 
 			 BufferedWriter b = new BufferedWriter(f); 

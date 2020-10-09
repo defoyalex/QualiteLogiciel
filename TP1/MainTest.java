@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MainTest {
@@ -42,12 +41,12 @@ public class MainTest {
         //Test pour un fichier avec deux classes. On s'assure qu'on trouve deux classes.
         try {
             Scanner reader = new Scanner(file);
-            String classInString1 = Main.findEndClass(reader, "");
+            String classInString1 = Main.classToString(reader, "");
             String[] numberLine = classInString1.split("\\r?\\n");
             assertEquals(90,numberLine.length,"FindEndClass for 1st class not good");
 
 
-            String classInString2 = Main.findEndClass(reader, "");
+            String classInString2 = Main.classToString(reader, "");
             String[] numberLine2 = classInString2.split("\\r?\\n");
             assertEquals(31,numberLine2.length,"FindEndClass for 2nd class not good");
 

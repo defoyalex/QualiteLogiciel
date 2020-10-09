@@ -2,10 +2,8 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
-import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ClasseMetriquesTest {
@@ -19,7 +17,7 @@ public class ClasseMetriquesTest {
         String classInString;
         try {
             Scanner reader = new Scanner(file);
-            classInString = Main.findEndClass(reader, "");
+            classInString = Main.classToString(reader, "");
             classe = new ClasseMetriques(path+".java",classInString,0);
             assertEquals(28,classe.getCLOC());
             assertEquals(55,classe.getLOC());
@@ -35,7 +33,7 @@ public class ClasseMetriquesTest {
         file = new File(path+".txt");
         try {
             Scanner reader = new Scanner(file);
-            classInString = Main.findEndClass(reader, "");
+            classInString = Main.classToString(reader, "");
             classe = new ClasseMetriques(path+".java",classInString,0);
             assertEquals(120,classe.getCLOC());
             assertEquals(278,classe.getLOC());

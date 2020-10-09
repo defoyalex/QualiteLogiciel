@@ -1,6 +1,10 @@
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Classe parent de ClasseMetrique et MethodeMetrique.
+ * Contient les méthodes générales d'analyse de code et calculs de métriques.
+ */
 public abstract class Metriques {
     protected String chemin;
     protected String className;
@@ -11,27 +15,55 @@ public abstract class Metriques {
     private boolean doWeCount = false;
     private int javadocLineCounter;
 
-    /* Degré selon lequel une méthode ou class est bien commentée
-       Méthode : dc/cc
-       classe : dc/wmc */
+    /**
+     * Degré selon lequel une méthode ou class est bien commentée
+     *        Méthode : dc/cc
+     *        classe : dc/wmc
+     */
     protected double bc;
 
+    /**
+     * className est utilisé pour identifier les classes lors de leurs analyses;
+     * ou pour savoir quelle classe contient quelle(s) méthode(s)
+     *
+     * @return className
+     */
     public String getClassName() {
         return this.className;
     }
 
+    /**
+     * loc est le nombre de ligne de code qui est contenu dans une méthode ou classe
+     *
+     * @return loc
+     */
     public int getLOC() {
         return this.loc;
     }
 
+    /**
+     * cloc est le nombre de ligne de code commentées contenu dans une méthode ou classe
+     *
+     * @return cloc
+     */
     public int getCLOC(){
         return this.cloc;
     }
 
+    /**
+     * dc est une mesure de densité de commentaire pour une classe ou méthode donnée
+     * elle est calculée en fesant "cloc/loc"
+     *
+     * @return dc
+     */
     public double getDC() {
         return this.dc;
     }
 
+    /**
+     * @param line
+     * @return retourne si la ligne contient des commentaires et, si oui, on retourne de quel type il s'agit
+     */
     public String isComment(String line) {
 
         if (isSingleLineComment(line)) {
@@ -49,7 +81,11 @@ public abstract class Metriques {
         return "No comment";
     }
 
-    //Vérifie si la ligne contient un commentaire d'une ligne
+
+    /**
+     * @param line
+     * @return boolean où true := la ligne contient un commentaire d'une ligne
+     */
     public boolean isSingleLineComment(String line) {
         Pattern singleLine = Pattern.compile("//");
         Matcher singleLineMatcher = singleLine.matcher(line);
@@ -59,7 +95,10 @@ public abstract class Metriques {
         return false;
     }
 
-    //Vérifie si la ligne contient le début d'un commentaire de plusieurs lignes
+    /**
+     * @param line
+     * @return boolean où true := la ligne contient le début d'un commentaire de plusieurs lignes
+     */
     public boolean isStartMultipleLineComment(String line) {
         Pattern multipleLineBeginning = Pattern.compile("/\\*");  //pour "/*"
         Matcher multipleLineBeginningMatcher = multipleLineBeginning.matcher(line);
@@ -69,7 +108,10 @@ public abstract class Metriques {
         return false;
     }
 
-    //Vérifie si la ligne contient la fin d'un commentaire de plusieurs lignes
+    /**
+     * @param line
+     * @return boolean où true := la ligne contient la fin d'un commentaire de plusieurs lignes
+     */
     public boolean isEndMultipleLineComment(String line) {
         Pattern multipleLineEnding = Pattern.compile("\\*/"); //pour "*/"
         Matcher multipleLineEndingMatcher = multipleLineEnding.matcher(line);
@@ -79,7 +121,10 @@ public abstract class Metriques {
         return false;
     }
 
-    //Vérifie si la ligne contient la suite d'un commentaire JavaDoc
+    /**
+     * @param line
+     * @return boolean où true := la ligne contient la suite d'un commentaire JavaDoc
+     */
     public boolean isJavadocMultipleLineComment(String line) {
         Pattern javadoc = Pattern.compile("\\*\\*"); //pour "/**"
         Matcher javadocMatcher = javadoc.matcher(line);
@@ -88,8 +133,11 @@ public abstract class Metriques {
         }
         return false;
     }
-	
-	//Vérifie s'il y a une ligne de code avant un commentaire
+
+    /**
+     * @param line
+     * @return boolean où true := il y a du code avec commentaire sur une même ligne
+     */
     public boolean isCodeAndComment(String line) {
         Pattern singleLine = Pattern.compile("\\S+\\s*//");
         Matcher singleLineMatcher = singleLine.matcher(line);
@@ -102,8 +150,13 @@ public abstract class Metriques {
         return false;
     }
 
-    /*Compte la quantité de lignes de commentaires et renvoie la nouvelle position
-    dans le tableau de lignes de code après les commentaires.*/
+    /**
+     * Compte la quantité de lignes de commentaires et retourne la nouvelle position
+     *     dans la table (contenant les lignes de code) après les commentaires.
+     * @param lines
+     * @param i
+     * @return i
+     */
     public int countLineComment(String[] lines, int i) {
         while (i < lines.length && !isEndMultipleLineComment(lines[i])) {
             this.cloc++;
@@ -120,7 +173,10 @@ public abstract class Metriques {
         return i;
     }
 
-    //Vérifie si c'est une ligne vide
+    /**
+     * @param line
+     * @return boolean true := si c'est une ligne vide ou ne contenant que des whitespaces
+     */
     public boolean isEmptyLine(String line) {
         Pattern nonWhiteSpace = Pattern.compile("\\S+");
         Matcher matcherNonWhiteSpace = nonWhiteSpace.matcher(line);
@@ -131,9 +187,13 @@ public abstract class Metriques {
         return false;
     }
 
+    /**
+     * Utilisé dans Main et Class pour compter les lignes de javadoc
+     * précédant les déclaractions de classes et méthodes
+     *
+     * @param line
+     */
     public void javadocLineCounter(String line) {
-        //utilisé dans Main et Class pour compter les lignes de javadoc
-        //précédant les déclaractions de classes et méthodes
 
         boolean beginningOfJavadoc = isJavadocMultipleLineComment(line);
         boolean endingOfJavadoc = isEndMultipleLineComment(line);
@@ -150,7 +210,5 @@ public abstract class Metriques {
             javadocLineCounter++; //alors on continue de compter
         }
     }
-
-
 
 }
