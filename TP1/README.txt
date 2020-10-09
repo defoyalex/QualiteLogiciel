@@ -71,3 +71,46 @@ CLASSES:
 				l'intérieur de la méthode. Puisque ce sont des formules mathématiques, il serait
 				utile d'ajouter des commentaires pour expliquer les démarches pour débugger ou
 				faire de la maintenance.
+				
+	
+MÉTHODES:
+La plupart des méthodes les moins bien commentés (faible BC) selon les métriques sont les méthodes 
+"equals_object" dans les classes XYPlot, CategoryPlot, etc. Cependant si on examine ces méthode, il 
+facile de comprendre ce que chacun des prédicats "if" fait. Elles n'ont donc pas nécessairemnt besoin de 
+commentaire. Ces méthodes, aussi avec un faible DC et un faible BC, sont moins bien commentés : 
+
+	
+
+
+	chemin : jfree\chart\axis\DateAxis.java
+	méthode : previousStandardDate_Date_DateTickUnit
+	Densité de commentaire : 0,0674
+	CC : 26
+	BC : 0,002593
+	Analyse : La méthode possède aucun commentaire malgré plusieurs (25) "if" et il n'est pas
+		      évident ce que fait chacun des prédicats. Pour facilité le débuggage, il suffirait
+			  de décrire ce que chacun des if Par exemple à la ligne 908 où il fait cette comparaison : 
+			  "if(d2.getTime() >= date.getTime())" sans dire ce que sont d2 et date. 
+			  
+			  
+	chemin : jfree\chart\plot\XYPlot.java
+	méthode : draw_Graphics2D_Rectangle2D_Point2D_PlotState_PlotRenderingInfo
+	Densité de commentaire : 0,109
+	CC : 37
+	BC : 0,002938
+	Analyse : Possède encore plus de prédicats que la méthode précédentes, mais aussi plus de commentaire. La 
+	méthode est très longue et l'explication de ce que la méthode fait dans le Javadoc n'a qu'une ligne. Il 
+	est donc très difficile de s'y retrouver dans la mutltitudes de if/else. Il aurait été bien d'ajouter 
+	dans le Javadoc ou à l'intérieur de la méthode une description de l'ordre des if/else pour faciliter
+	la maintenance et le débuggage.
+	
+	chemin : jfree\chart\renderer\AbstractRenderer.java
+	méthode : calculateLabelAnchorPoint_ItemLabelAnchor_double_double_PlotOrientation
+	Densité de commentaire : 0,0847
+	CC : 26
+	BC : 0,003259
+	Analyse : Cette méthode a aussi un grande complexité cyclomatique et une basse densité de commentaire.
+	En la regardant on voit qu'il serait difficile de débugger la méthode puisqu'elle possède plusieurs 
+	prédicats du type: "if(anchor == ItemLabelAnchor.INSIDE1)", mais on ne sait pas ce que représente
+	"INSIDE1" donc il est difficile de comprendre ce que fait chacun des "if". 
+	
